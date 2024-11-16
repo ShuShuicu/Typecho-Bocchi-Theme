@@ -1,0 +1,117 @@
+@charset "utf-8";
+/* 
+    Typecho Theme Development Framework
+    TTDF · 一个面向小白简单易懂的Typecho主题模板开发框架
+    Copyright 2024-2024 鼠子Tomoriゞ
+    https://blog.miomoe.cn/
+*/
+body #content {
+    min-height: calc(75vh - 100px);
+    display: flex;
+    flex-direction: column;
+}
+a {
+    color: unset;
+    text-decoration: unset;
+}
+img {
+    border-radius: 8px;
+}
+body .mdui-card {
+    border-radius: 8px;
+}
+body .mdui-typo {
+    font-size: 17px;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+body .mdui-typo h1, body .mdui-typo h2, body .mdui-typo h3, body .mdui-typo h4, body .mdui-typo h5, body .mdui-typo h6 {
+    margin-top: 0em;
+}
+body .view-image {
+    z-index: 999999999;
+}
+#PostContent button {
+    border-radius: 8px;
+}
+#translate {
+    display: none;
+}
+.thumbnail-post {
+    height: 200px;
+    background-position: center center !important;
+    background-size: cover !important;
+}
+.drawer-item {
+    color: white;
+    background: rgba(0, 0, 0, 0.87);
+    padding: 3px 4px 3px 4px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+/**侧边**/
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    /* 修改高度为10px */
+}
+::-webkit-scrollbar-thumb {
+    background-color: #12b7f5;
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 93, 143, 1) 25%, transparent 25%, transparent 50%, rgba(255, 93, 143, 1) 50%, rgba(255, 93, 143, 1) 75%, transparent 75%, transparent);
+}
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+    background: #f6f6f6;
+}
+/* ------------------
+ * Comment list
+ * --------------- */
+ #comments {
+    padding-top: 15px;
+}
+.comment-list, .comment-list ol {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.comment-list li {
+    padding: 14px;
+    margin-top: 10px;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+}
+.comment-list li .comment-reply {
+    text-align: right;
+    font-size: .92857em;
+}
+
+
+.comment-author .avatar {
+    float: left;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+.comment-author cite {
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* Comment reply */
+.comment-list .respond {
+    margin-top: 15px;
+    border-top: 1px solid #EEE;
+}
+.respond .cancel-comment-reply {
+    float: right;
+    margin-top: 15px;
+    font-size: .92857em;
+}
+#comment-form label {
+    display: block;
+    margin-bottom: .5em;
+    font-weight: bold;
+}
+#comment-form .required:after {
+    content: " *";
+    color: #C00;
+}
