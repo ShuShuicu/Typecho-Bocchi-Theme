@@ -52,4 +52,13 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             _t('Pixiv图片加速节点，推荐使用WPCdn节点。WPCdn节点加载后缓存一段时间，李初一节点无缓存。')
         );
     $form->addInput($PixivPicCdn);
-    
+    // 文章版权自定义
+    $PostCopyright = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'PostCopyright',
+            NULL,
+            '如有侵权，请联系站长进行删除处理。<br />
+            本站文章大部分为原创，用于个人学习记录，可能对您有所帮助，仅供参考！<br />',
+            _t('文章版权'),
+            _t('文章版权自定义，支持HTML。')
+        );
+    $form->addInput($PostCopyright);

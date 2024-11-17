@@ -52,8 +52,7 @@ if (Get::Options('PostNav') === 'open') {
     </legend>
             本网站名称：<span style=" color: #3333ff"><span style="color: #FF6666; font-size: 18px"><strong><?php echo Get::Options('title') ?></strong></span></span><br />
             本站永久网址：<font color="#FF6666"><?php echo Get::Options('siteUrl') ?></font><br />
-            如有侵权，请联系站长进行删除处理。<br />
-            本站文章大部分为原创，用于个人学习记录，可能对您有所帮助，仅供参考！<br />
+            <?php echo Get::Options('PostCopyright') ?>
         </fieldset>
                 </div>
             </div>
