@@ -92,7 +92,7 @@ function get_ArticleThumbnail($widget) {
     // 生成随机缩略图
     $base_url = !empty(Helper::options()->articleImgSpeed)
         ? rtrim(Helper::options()->articleImgSpeed, '/') . '/'
-        : $widget->widget('Widget_Options')->themeUrl . '/assets/images/thumb/';
+        : $widget->widget('Widget_Options')->themeUrl . '/Assets/images/thumb/';
     
     return get_RandomThumbnail($base_url);
 }
