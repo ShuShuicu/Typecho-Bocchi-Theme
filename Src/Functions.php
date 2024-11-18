@@ -8,9 +8,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $avatarCdn = Get::Options('AvatarCdn');
 define('__TYPECHO_GRAVATAR_PREFIX__', $avatarCdn);
 
-
 // 判断REST API是否启用
-if (Get::Options('RestApiOpen') === 'open'){
+if (Get::Options('RestApi') === 'open'){
     GetJsonData::Tomori();
 };
 

@@ -2,8 +2,8 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
     // 侧边翻译功能是否开启
-    $SidebarTranslateOpen = new Typecho_Widget_Helper_Form_Element_Radio(
-        'SidebarTranslateOpen',
+    $SidebarTranslate = new Typecho_Widget_Helper_Form_Element_Radio(
+        'SidebarTranslate',
             array(
                 'open' => '启用',
                 'close' => '关闭',
@@ -12,7 +12,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             _t('<h3>功能设置</h3>翻译功能'),
             _t('是否启用侧边全站实时翻译功能，默认为启用。')
         );
-    $form->addInput($SidebarTranslateOpen);
+    $form->addInput($SidebarTranslate);
     // 面包蟹导航
     $PostNav = new Typecho_Widget_Helper_Form_Element_Radio(
         'PostNav',
@@ -26,8 +26,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         );
     $form->addInput($PostNav);
     // REST API 是否开启
-    $RestApiOpen = new Typecho_Widget_Helper_Form_Element_Radio(
-        'RestApiOpen',
+    $RestApi = new Typecho_Widget_Helper_Form_Element_Radio(
+        'RestApi',
             array(
                 'open' => '启用',
                 'close' => '关闭',
@@ -36,7 +36,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             _t('REST API'),
             _t('是否启用 REST API，默认为关闭。<br>无需求关闭即可，与WordPress REST API类似，用于开发小程序、VUE等项目。<br><a href="https://gitee.com/ShuShuicu/typecho-theme-development-framework#rest-api-%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E" target="_blank">查看TTDF REST API文档</a>')
         );
-    $form->addInput($RestApiOpen);
+    $form->addInput($RestApi);
     // pixiv加速
     $PixivPicCdn = new Typecho_Widget_Helper_Form_Element_Select(
         'PixivPicCdn',
@@ -57,7 +57,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         'PostCopyright',
             NULL,
             '如有侵权，请联系站长进行删除处理。<br />
-            本站文章大部分为原创，用于个人学习记录，可能对您有所帮助，仅供参考！<br />',
+            本站文章大部分为原创，用于个人学习记录，可能对您有所帮助，仅供参考！',
             _t('文章版权'),
             _t('文章版权自定义，支持HTML。')
         );

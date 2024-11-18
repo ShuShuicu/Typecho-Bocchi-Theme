@@ -31,7 +31,7 @@ if (Get::Options('PostNav') === 'open') {
         </div>
         <div class="mdui-divider"></div>
         <div class="mdui-card-content">
-            <div class="mdui-typo" id="PostContent"><?php GetPost::Content(); ?></div>
+            <div id="PostContent"><?php GetPost::Content(); ?></div>
             <div>
 
     <div>
@@ -59,9 +59,12 @@ if (Get::Options('PostNav') === 'open') {
         </div>
     </div>
 </div>
+
 <?php if (Get::Fields('PostStyleButton') === 'open') : ?>
+
 <div class="mdui-card mdui-card-content mdui-m-b-2">
-    <?php 
+
+<?php 
     // 获取文章的 buttonStyle 字段内容
     $buttons = $this->fields->buttonStyle;
 
@@ -80,6 +83,37 @@ if (Get::Options('PostNav') === 'open') {
             <b><?php echo htmlspecialchars($buttonText); ?></b>
         </button>
     </a>
+    <?php
+            }
+        }
+    }
+    ?>
+
+<?php 
+    // 获取文章的 buttonStyle 字段内容
+    $buttons = $this->fields->buttonStyle;
+
+    // 如果字段不为空
+    if (!empty($buttons)) {
+        // 分行解析
+        $buttonLines = explode("\n", $buttons);
+        foreach ($buttonLines as $button) {
+            // 正则解析 名称|介绍|链接|超链
+            if (preg_match('/^(.*?)\|(.*?)\|(.*?)\|(.*?)$/', trim($button), $matches)) {
+                $buttonText = $matches[1]; // 按钮名称
+                $buttonIntro = $matches[2]; // 按钮介绍
+                $buttonImg = $matches[3]; // 图片链接
+                $buttonLink = $matches[4]; // 按钮超链
+    ?>
+        <div class="mdui-card mdui-m-y-1 mdui-hoverable">
+            <a href="<?php echo htmlspecialchars($buttonLink); ?>" target="_blank" rel="external nofollow">
+                <div class="mdui-card-header">
+                    <img class="mdui-card-header-avatar" src="<?php echo htmlspecialchars($buttonImg); ?>" alt="<?php echo htmlspecialchars($buttonLink); ?>">
+                    <div class="mdui-card-header-title"><?php echo htmlspecialchars($buttonText); ?></div>
+                    <div class="mdui-card-header-subtitle"><?php echo htmlspecialchars($buttonIntro); ?></div>
+                </div>
+            </a>
+        </div>
     <?php
             }
         }

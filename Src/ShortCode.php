@@ -2,26 +2,83 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 /**
- * 短代码
+ * 短代码解析
  */
-// 短代码解析函数
+class ShortCodeParser {
+    public function __construct() {
+        // 为文章内容和摘要添加过滤器
+        Typecho_Plugin::factory('Widget_Abstract_Contents')->contentEx = array($this, 'add_shortcode_support');
+        Typecho_Plugin::factory('Widget_Abstract_Contents')->excerptEx = array($this, 'add_shortcode_support');
+    }
 
-function parse_button_shortcode($content) {
-    $pattern = '/\[b\s*url=\"(.*?)\"\](.*?)\[\/b\]/i';
-    $callback = function ($matches) {
-        $buttonLink = htmlspecialchars($matches[1], ENT_QUOTES, 'UTF-8');
-        $buttonName = htmlspecialchars($matches[2], ENT_QUOTES, 'UTF-8');
-        return '<a target="_blank" href="' . $buttonLink . '"><button class="mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent"><b>' . $buttonName . '</b></button></a>';
-    };
-    return preg_replace_callback($pattern, $callback, $content);
+    /**
+     * 解码HTML实体并解析短代码
+     *
+     * @param string $content
+     * @return string
+     */
+    public function add_shortcode_support($content) {
+        $content = htmlspecialchars_decode($content); // 先解码HTML实体
+        $content = $this->parse_button_shortcode($content);
+        return $content;
+    }
+
+    /**
+     * 解析按钮短代码
+     *
+     * @param string $content
+     * @return string
+     */
+    private function parse_button_shortcode($content) {
+        // 按钮
+        $pattern = '/\[b\s*url="(.*?)"\](.*?)\[\/b\]/i';
+        $callback = function ($matches) {
+            $buttonLink = htmlspecialchars($matches[1], ENT_QUOTES, 'UTF-8');
+            $buttonName = htmlspecialchars($matches[2], ENT_QUOTES, 'UTF-8');
+            return '<a target="_blank" rel="external nofollow" href="' . $buttonLink . '"><button class="mdui-btn mdui-btn-raised mzei-ripple mdui-color-theme-accent"><b>' . $buttonName . '</b></button></a>';
+        };
+        $content = preg_replace_callback($pattern, $callback, $content);
+
+        // 长按钮
+        $pattern_new = '/\[b1 url="(.*?)" img="(.*?)" info="(.*?)"](.*?)\[\/b1\]/i';
+        $callback_new = function ($matches) {
+            $link = htmlspecialchars($matches[1], ENT_QUOTES, 'UTF-8');
+            $image = htmlspecialchars($matches[2], ENT_QUOTES, 'UTF-8');
+            $info = htmlspecialchars($matches[3], ENT_QUOTES, 'UTF-8');
+            $text = htmlspecialchars($matches[4], ENT_QUOTES, 'UTF-8');
+            return '<a href="' . $link . '" target="_blank" rel="external nofollow">
+                <div class="mdui-card mdui-m-y-1 mdui-hoverable">
+                        <div class="mdui-card-header">
+                            <img class="mdui-card-header-avatar" src="' . $image . '" alt="' . $text . '">
+                            <div class="mdui-card-header-title">' . $text . '</div>
+                            <div class="mdui-card-header-subtitle">' . $info . '</div>
+                        </div>
+                    </div>
+                </a>
+            ';
+        };
+        $content = preg_replace_callback($pattern_new, $callback_new, $content);
+
+        // 新增短代码 
+        $pattern_c = '/\[c url="(.*?)" img="(.*?)"\](.*?)\[\/c\]/i';
+        $callback_c = function ($matches) {
+            $link = htmlspecialchars($matches[1], ENT_QUOTES, 'UTF-8');
+            $image = htmlspecialchars($matches[2], ENT_QUOTES, 'UTF-8');
+            $text = htmlspecialchars($matches[3], ENT_QUOTES, 'UTF-8');
+            return '
+                <a target="_blank" rel="external nofollow" href="' . $link . '">
+                    <div class="mdui-chip">
+                        <img class="mdui-chip-icon" src="' . $image . '" alt="Chip Icon" />
+                        <span class="mdui-chip-title">' . $text . '</span>
+                    </div>
+                </a>
+            ';
+        };
+        $content = preg_replace_callback($pattern_c, $callback_c, $content);
+
+        return $content;
+    }
 }
 
-function add_shortcode_support($content) {
-    $content = htmlspecialchars_decode($content); // 先解码HTML实体
-    $content = parse_button_shortcode($content);
-    return $content;
-}
-
-// 为文章内容和摘要添加过滤器
-Typecho_Plugin::factory('Widget_Abstract_Contents')->contentEx = 'add_shortcode_support';
-Typecho_Plugin::factory('Widget_Abstract_Contents')->excerptEx = 'add_shortcode_support';
+// 初始化短代码解析器
+$shortCodeParser = new ShortCodeParser();

@@ -14,21 +14,27 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
 
     <div class="mdui-col-xl-6 mdui-col-lg-6 mdui-col-md-6 mdui-col-sm-12 mdui-m-b-2">
-        <a href="<?php GetPost::Permalink(); ?>">
+        <a href="<?php 
+            if(Get::Fields('PostStyleGoUrl') === 'open') {
+                echo Get::Fields('goUrlStyle');
+            }else {
+                GetPost::Permalink();
+            }
+        ?>">
             <div class="mdui-card">
             <?php
                 // 判断是否显示缩略图
-                if (Get::Options('IndexStyleThumbnail') == 'open'):
+                if (Get::Options('IndexStyleThumbnail') == 'open'){
                     $thumbnailStyle = Get::Fields('thumbnailStyle');
                     $thumbnailUrl = $thumbnailStyle ? $thumbnailStyle : get_ArticleThumbnail($this);  
-                    if ($thumbnailUrl):  
+                    if ($thumbnailUrl){  
             ?>
             <div class="mdui-card-media">
                 <div class="thumbnail-post" style="background:url(<?php echo htmlspecialchars($thumbnailUrl); ?>);"></div>
             </div>
             <?php 
-                    endif;
-                endif; 
+                    };
+                }; 
             ?>
                 <div class="mdui-card-primary">
                     <div class="mdui-card-primary-title"><?php GetPost::Title(); ?></div>

@@ -24,7 +24,27 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             _t('是否在文章列表中显示缩略图，注：面板模式不生效。')
         );
         $form->addInput($IndexStyleThumbnail);
-    
+    // 侧边显示设置
+    $SidebarDisplay = new Typecho_Widget_Helper_Form_Element_Radio(
+        'SidebarDisplay',
+            array(
+                'Auther' => '作者',
+                'Logo' => 'Logo',
+            ),
+            'Auther',
+            _t('Auther&Logo'),
+            _t('侧边顶部显示为作者介绍或Logo设置。')
+        );
+        $form->addInput($SidebarDisplay);
+    // 侧边顶部Logo
+    $SidebarLogo = new Typecho_Widget_Helper_Form_Element_Text(
+        'SidebarLogo',
+        NULL,
+        '' . THEME_URL . '/Assets/images/logo.png',
+        _t('Logo地址'),
+        _t('请填入Logo地址，没有则显示网站标题。')
+    );
+    $form->addInput($SidebarLogo);
     // 侧边顶部作者设置
     $SidebarAuther = new Typecho_Widget_Helper_Form_Element_Text(
         'SidebarAuther',
@@ -63,9 +83,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             _t('是否在侧边导航中默认展开显示分类列表')
         );
         $form->addInput($SidebarNavCategory);
-    // 侧边导航页面
-    $SidebarNavPage = new Typecho_Widget_Helper_Form_Element_Radio(
-        'SidebarNavPage',
+    // 侧边归档页面
+    $SidebarNvaTime = new Typecho_Widget_Helper_Form_Element_Radio(
+        'SidebarNvaTime',
             array(
                 'open' => '展开',
                 'close' => '折叠',
@@ -74,7 +94,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             _t('侧边页面'),
             _t('是否在侧边导航中默认展开显示页面列表')
         );
-        $form->addInput($SidebarNavPage);
+        $form->addInput($SidebarNvaTime);
     // 侧边翻译
     $SidebarTranslate = new Typecho_Widget_Helper_Form_Element_Radio(
         'SidebarTranslate',
