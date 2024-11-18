@@ -58,7 +58,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <li class="mdui-subheader">其他</li>
                     <!-- 翻译 -->
                     <?php if (Get::Options("SidebarTranslate") === 'open'){ ?> 
-                    <div class="mdui-collapse-item mdui-collapse-item-<?php echo Get::Options("SidebarTranslate"); ?>">
+                    <div class="mdui-collapse-item mdui-collapse-item-<?php echo Get::Options("SidebarTranslateOpen"); ?>">
                         <div class="mdui-collapse-item-header mdui-list-item mdui-ripple" role="button" aria-expanded="false">
                             <i class="mdui-list-item-icon mdui-icon material-icons" aria-hidden="true">language</i>
                             <div class="mdui-list-item-content">页面翻译</div>

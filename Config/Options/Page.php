@@ -84,8 +84,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         );
         $form->addInput($SidebarNavCategory);
     // 侧边翻译
-    $SidebarTranslate = new Typecho_Widget_Helper_Form_Element_Radio(
-        'SidebarTranslate',
+    $SidebarTranslateOpen = new Typecho_Widget_Helper_Form_Element_Radio(
+        'SidebarTranslateOpen',
             array(
                 'open' => '展开',
                 'close' => '折叠',
@@ -94,7 +94,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             _t('侧边翻译'),
             _t('是否在侧边导航中默认展开显示翻译列表')
         );
-        $form->addInput($SidebarTranslate);
+        $form->addInput($SidebarTranslateOpen);
     // 侧边自定义
     $SidebarCustom = new Typecho_Widget_Helper_Form_Element_Textarea(
         'SidebarCustom',
