@@ -38,9 +38,13 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             ?>
                 <div class="mdui-card-primary">
                     <div class="mdui-card-primary-title"><?php GetPost::Title(); ?></div>
-                    <div class="mdui-card-primary-subtitle"><?php GetPost::Date(); ?></div>
+                    <div class="mdui-card-primary-subtitle"><?php GetPost::Date(); ?> · <?php GetPost::Category() ?> · <?php GetPost::Tags() ?></div>
+                    <?php 
+                    // 判断是否显示Excerpt
+                    if(Get::Options('IndexStyleExcerpt') === 'open'){ ?>
                     <div class="mdui-divider"></div>
                     <div class="mdui-card-content"><?php GetPost::Excerpt(100); ?> ...</div>
+                    <?php } ?>
                 </div>
 
             </div>

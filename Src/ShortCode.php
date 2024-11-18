@@ -39,19 +39,19 @@ class ShortCodeParser {
         };
         $content = preg_replace_callback($pattern, $callback, $content);
 
-        // 新增短代码 
+        // 纸片短代码
         $pattern_c = '/\[c url="(.*?)" img="(.*?)"\](.*?)\[\/c\]/i';
         $callback_c = function ($matches) {
             $link = htmlspecialchars($matches[1], ENT_QUOTES, 'UTF-8');
             $image = htmlspecialchars($matches[2], ENT_QUOTES, 'UTF-8');
             $text = htmlspecialchars($matches[3], ENT_QUOTES, 'UTF-8');
             return '
-                <a target="_blank" rel="external nofollow" href="' . $link . '">
-                    <div class="mdui-chip">
-                        <img class="mdui-chip-icon" src="' . $image . '" alt="Chip Icon" />
-                        <span class="mdui-chip-title">' . $text . '</span>
-                    </div>
-                </a>
+                <div class="mdui-chip">
+                    <img class="mdui-chip-icon" src="' . $image . '" alt="Chip Icon" />
+                        <span class="mdui-chip-title">
+                        <a target="_blank" rel="external nofollow" href="' . $link . '">' . $text . '</a>
+                    </span>
+                </div>
             ';
         };
         $content = preg_replace_callback($pattern_c, $callback_c, $content);

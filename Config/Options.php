@@ -136,16 +136,13 @@ function themeConfig($form)
                     }
                 }
             }
-
-            // 输出操作表单
-            echo '<form class="protected home col-mb-12" action="" method="post">
-    <input type="submit" name="type" class="btn btn-s" value="备份模板设置数据" />  
-    <input type="submit" name="type" class="btn btn-s" value="还原模板设置数据" />  
-    <input type="submit" name="type" class="btn btn-s" value="删除备份数据" />
-</form>';
             ?>
-        </div>
-        <br><br><hr>
+<form class="protected home col-mb-12 mdui-m-b-3" action="" method="post">
+    <input type="submit" name="type" class="btn btn-s mdui-btn mdui-btn-raised mdui-ripple mdui-color-indigo" value="备份模板设置数据" />  
+    <input type="submit" name="type" class="btn btn-s mdui-btn mdui-btn-raised mdui-ripple mdui-color-blue" value="还原模板设置数据" />  
+    <input type="submit" name="type" class="btn btn-s mdui-btn mdui-btn-raised mdui-ripple mdui-color-pink" value="删除备份数据" />
+</form>
+</div>
 
 <?php 
 $OptionsFiles = [

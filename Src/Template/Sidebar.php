@@ -3,12 +3,12 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
         <div class="mdui-drawer mdui-card" id="drawer" style="border-radius: 0;">
 
-        <?php if (Get::Options('SidebarDisplay') === 'Auther'){ ?>
+        <?php if (Get::Options('SidebarDisplay') === 'Author'){ ?>
 
             <div class="mdui-card-header">
-                <img class="mdui-card-header-avatar" src="<?php echo Get::Options('SidebarAutherAvatar') ? Get::Options('SidebarAutherAvatar') : GetTheme::AssetsUrl() . "/images/favicon.svg"; ?>">
-                <div class="mdui-card-header-title"><?php echo Get::Options('SidebarAuther') ? Get::Options('SidebarAuther') : Get::Options('title'); ?></div>
-                <div class="mdui-card-header-subtitle"><?php echo Get::Options('SidebarAutherInfo') ? Get::Options('SidebarAutherInfo') : Get::Options('description'); ?></div>
+                <img class="mdui-card-header-avatar" src="<?php echo Get::Options('SidebarAuthorAvatar') ? Get::Options('SidebarAuthorAvatar') : GetTheme::AssetsUrl() . "/images/favicon.svg"; ?>">
+                <div class="mdui-card-header-title"><?php echo Get::Options('SidebarAuthor') ? Get::Options('SidebarAuthor') : Get::Options('title'); ?></div>
+                <div class="mdui-card-header-subtitle"><?php echo Get::Options('SidebarAuthorInfo') ? Get::Options('SidebarAuthorInfo') : Get::Options('description'); ?></div>
             </div>
         <?php } if (Get::Options('SidebarDisplay') === 'Logo') { ?>
             <img class="mdui-img-fluid" src="<?php echo Get::Options('SidebarLogo') ?>"/>
@@ -65,19 +65,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                             <i class="mdui-collapse-item-arrow mdui-icon material-icons" aria-hidden="true">keyboard_arrow_down</i>
                         </div>
                         <div class="ignore-translate mdui-collapse-item-body mdui-list" role="menu">
-                        <?php
-                            $languages = [
-                                'chinese_simplified' => '简体中文',
-                                'chinese_traditional' => '繁体中文',
-                                'english' => 'English',
-                                'japanese' => '日本語',
-                                'korean' => '한국어'
-                            ];
-                            foreach ($languages as $code => $name){ ?>
-                                <a href="javascript:translate.changeLanguage('<?php echo $code; ?>');" class="mdui-list-item mdui-ripple" role="menuitem">
-                                    <div class="mdui-list-item-content"><?php echo $name; ?></div>
-                            </a>
-                            <?php }; ?>
+                            <?php Get::Need('Src/Tomori/Translate.php'); ?>
                         </div>
                     </div>
                     <?php }; ?>

@@ -1,6 +1,19 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
+    // 外链转内链
+    $GoLinkUrl = new Typecho_Widget_Helper_Form_Element_Radio(
+        'GoLinkUrl',
+            array(
+                'open' => '启用',
+                'close' => '关闭',
+            ),
+            'open',
+            _t('<h3>功能设置</h3>外转内链'),
+            _t('是否启用文章外链转内链跳转，默认为启用。')
+        );
+    $form->addInput($GoLinkUrl);
+
     // 侧边翻译功能是否开启
     $SidebarTranslate = new Typecho_Widget_Helper_Form_Element_Radio(
         'SidebarTranslate',
@@ -9,7 +22,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 'close' => '关闭',
             ),
             'open',
-            _t('<h3>功能设置</h3>翻译功能'),
+            _t('翻译功能'),
             _t('是否启用侧边全站实时翻译功能，默认为启用。')
         );
     $form->addInput($SidebarTranslate);

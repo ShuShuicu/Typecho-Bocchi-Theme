@@ -13,6 +13,57 @@ if (Get::Options('RestApi') === 'open'){
     GetJsonData::Tomori();
 };
 
+if (Get::Options('GoLinkUrl') === 'open') {
+    // 跳转
+    if (isset($_GET['GoLink']) && isset($_GET['Url'])) {
+        Get::Need('Src/Tomori/GoLink.php');
+        exit;
+    }
+    // 外链转内链
+    function convertLinks($content, $widget, $lastResult)
+    {
+        $content = empty($lastResult) ? $content : $lastResult;
+        $siteUrl = Get::Options('siteUrl');
+        return preg_replace_callback(
+            '/<a\s+(.*?)href="([^"]+)"(.*?)>/i',
+            function ($matches) use ($siteUrl) {
+                $url = $matches[2];
+                error_log("Matched URL: " . $url); // 添加日志记录
+                if (strpos($url, $siteUrl) === false) {
+                    // 外部链接跳转
+                    $encodedUrl = base64_encode($url);
+                    return '<a target="_blank" ' . $matches[1] . 'href="' . $siteUrl . '?GoLink&Url=' . $encodedUrl . '"' . $matches[3] . '>';
+                } else {
+                    // 内部链接保持不变
+                    return '<a ' . $matches[1] . 'href="' . $url . '"' . $matches[3] . '>';
+                }
+            },
+            $content
+        );
+    }
+    // 在 themeInit 函数中调用 convertLinks
+    function themeInit($archive)
+    {
+        // 强制用户文章最新评论显示在文章首页
+        Helper::options()->commentsPageDisplay = 'first';
+        // 将较新的评论显示在前面
+        Helper::options()->commentsOrder = 'DESC';
+        // 突破评论回复楼层限制
+        Helper::options()->commentsMaxNestingLevels = 999;
+        // 在文章内容输出前调用 convertLinks
+        $archive->content = convertLinks($archive->content, $archive, null);
+    }
+}if (Get::Options('GoLinkUrl') === 'close'){
+    function themeInit($archive)
+    {
+        // 强制用户文章最新评论显示在文章首页
+        Helper::options()->commentsPageDisplay = 'first';
+        // 将较新的评论显示在前面
+        Helper::options()->commentsOrder= 'DESC';
+        // 突破评论回复楼层限制
+        Helper::options()->commentsMaxNestingLevels = 999;
+    }
+}
 class GetBocchi {
     public static function Template($File) {
         Get::Need('Src/Template/' . $File . '.php');
@@ -22,16 +73,6 @@ class GetBocchi {
     }
 }
 
-
-function themeInit($archive)
-{
-// 强制用户文章最新评论显示在文章首页
-    Helper::options()->commentsPageDisplay = 'first';
-// 将较新的评论显示在前面
-    Helper::options()->commentsOrder= 'DESC';
-// 突破评论回复楼层限制
-    Helper::options()->commentsMaxNestingLevels = 999;
-}
 
 function get_comment_at($coid)
 {//评论@函数

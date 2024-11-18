@@ -24,15 +24,27 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             _t('是否在文章列表中显示缩略图，注：面板模式不生效。')
         );
         $form->addInput($IndexStyleThumbnail);
+    // 首页介绍
+    $IndexStyleExcerpt = new Typecho_Widget_Helper_Form_Element_Radio(
+        'IndexStyleExcerpt',
+            array(
+                'open' => '打开',
+                'close' => '关闭',
+            ),
+            'close',
+            _t('首页文章简介'),
+            _t('是否在文章列表中显示文章简介，注：面板模式不生效。')
+        );
+        $form->addInput($IndexStyleExcerpt);
     // 侧边显示设置
     $SidebarDisplay = new Typecho_Widget_Helper_Form_Element_Radio(
         'SidebarDisplay',
             array(
-                'Auther' => '作者',
+                'author' => '作者',
                 'Logo' => 'Logo',
             ),
-            'Auther',
-            _t('Auther&Logo'),
+            'author',
+            _t('author&Logo'),
             _t('侧边顶部显示为作者介绍或Logo设置。')
         );
         $form->addInput($SidebarDisplay);
@@ -46,30 +58,30 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     );
     $form->addInput($SidebarLogo);
     // 侧边顶部作者设置
-    $SidebarAuther = new Typecho_Widget_Helper_Form_Element_Text(
-        'SidebarAuther',
+    $SidebarAuthor = new Typecho_Widget_Helper_Form_Element_Text(
+        'SidebarAuthor',
         NULL,
         '' . Get::Options('title') . '',
         _t('作者名称'),
         _t('请填入作者名称，没有则显示网站标题。')
     );
-    $form->addInput($SidebarAuther);
-    $SidebarAutherAvatar = new Typecho_Widget_Helper_Form_Element_Text(
-        'SidebarAutherAvatar',
+    $form->addInput($SidebarAuthor);
+    $SidebarAuthorAvatar = new Typecho_Widget_Helper_Form_Element_Text(
+        'SidebarAuthorAvatar',
         NULL,
         '' . THEME_URL . '/Assets/images/avatar.jpg',
         _t('作者头像'),
         _t('请填入作者名称，没有则显示网站Favicon。')
     );
-    $form->addInput($SidebarAutherAvatar);
-    $SidebarAutherInfo = new Typecho_Widget_Helper_Form_Element_Textarea(
-        'SidebarAutherInfo',
+    $form->addInput($SidebarAuthorAvatar);
+    $SidebarAuthorInfo = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'SidebarAuthorInfo',
         NULL,
         '' . Get::Options('description') . '',
         _t('作者简介'),
         _t('请填入作者简介，没有则显示网站介绍。')
     );
-    $form->addInput($SidebarAutherInfo);
+    $form->addInput($SidebarAuthorInfo);
 
     // 侧边导航分类
     $SidebarNavCategory = new Typecho_Widget_Helper_Form_Element_Radio(

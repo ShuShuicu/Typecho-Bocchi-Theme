@@ -1,6 +1,5 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-
     // 评论头像
     $AvatarCdn = new Typecho_Widget_Helper_Form_Element_Select(
         'AvatarCdn',

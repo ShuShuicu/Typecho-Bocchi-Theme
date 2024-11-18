@@ -27,7 +27,7 @@ if (Get::Options('PostNav') === 'open') {
     <div class="mdui-card-primary">
         <div class="mdui-card-primary-title"><?php GetPost::Title(); ?></div>
         <div class="mdui-card-primary-subtitle">
-            <?php GetPost::Date(); ?> · 共<?php art_count($this->cid); ?>字  · <?php GetPost::Category(',', true); ?> · <?php GetPost::Tags(',', true); ?>
+            <?php GetPost::Date(); ?> · 字数：<?php $zishu=mb_strlen($this->content); echo $zishu; ?> · <?php GetPost::Category(',', true); ?> · <?php GetPost::Tags(',', true); ?>
         </div>
         <div class="mdui-divider"></div>
         <div class="mdui-card-content">
