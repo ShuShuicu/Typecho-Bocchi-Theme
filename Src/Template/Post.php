@@ -31,7 +31,7 @@ if (Get::Options('PostNav') === 'open') {
         </div>
         <div class="mdui-divider"></div>
         <div class="mdui-card-content">
-            <div id="PostContent"><?php GetPost::Content(); ?></div>
+            <div class="mdui-typo" id="PostContent"><?php GetPost::Content(); ?></div>
             <div>
 
     <div>
