@@ -5,17 +5,18 @@
     Copyright 2024-2024 鼠子Tomoriゞ
     https://blog.miomoe.cn/
 */
+body {
+    font-weight:500;
+}
 body #content {
     min-height: calc(75vh - 100px);
     display: flex;
     flex-direction: column;
+    border-radius: 8px;
 }
 a {
     color: unset;
     text-decoration: unset;
-}
-img {
-    border-radius: 8px;
 }
 body .mdui-card {
     border-radius: 8px;
@@ -66,7 +67,7 @@ body .view-image {
 /* ------------------
  * Comment list
  * --------------- */
- #comments {
+#comments {
     padding-top: 15px;
 }
 .comment-list, .comment-list ol {

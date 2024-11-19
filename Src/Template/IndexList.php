@@ -21,7 +21,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 GetPost::Permalink();
             }
         ?>">
-            <div class="mdui-card">
+            <div class="mdui-card mdui-hoverable">
             <?php
                 // 判断是否显示缩略图
                 if (Get::Options('IndexStyleThumbnail') == 'open'){

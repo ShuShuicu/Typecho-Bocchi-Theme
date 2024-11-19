@@ -40,11 +40,12 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     $SidebarDisplay = new Typecho_Widget_Helper_Form_Element_Radio(
         'SidebarDisplay',
             array(
-                'author' => '作者',
+                'Author' => '作者',
                 'Logo' => 'Logo',
+                'close' => '关闭',
             ),
-            'author',
-            _t('author&Logo'),
+            'Author',
+            _t('Author&Logo'),
             _t('侧边顶部显示为作者介绍或Logo设置。')
         );
         $form->addInput($SidebarDisplay);

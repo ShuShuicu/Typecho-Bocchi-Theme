@@ -5,7 +5,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <?php $this->comments()->to($comments); ?>
 
 
-    <div class="mdui-card mdui-hoverable mdui-m-b-2">
+    <div class="mdui-card mdui-m-b-2">
         <div class="mdui-card-content">
             <div class="mdui-card-primary-title mdui-text-truncate">
                 <i class="mdui-icon material-icons">comment</i>
