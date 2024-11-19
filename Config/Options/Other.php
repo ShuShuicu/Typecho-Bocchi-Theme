@@ -13,6 +13,18 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             _t('是否启用文章外链转内链跳转，默认为启用。')
         );
     $form->addInput($GoLinkUrl);
+    // 是否禁止明文跳转
+    $GoLinkUrlBlank = new Typecho_Widget_Helper_Form_Element_Radio(
+        'GoLinkUrlBlank',
+            array(
+                'open' => '允许',
+                'close' => '禁止',
+            ),
+            'close',
+            _t('Base64跳转'),
+            _t('是否启用明文(非base64)跳转，默认为允许。')
+        );
+    $form->addInput($GoLinkUrlBlank);
 
     // 侧边翻译功能是否开启
     $SidebarTranslate = new Typecho_Widget_Helper_Form_Element_Radio(

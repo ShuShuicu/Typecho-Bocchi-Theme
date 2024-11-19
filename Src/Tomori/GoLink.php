@@ -17,8 +17,11 @@ $t_url = !empty($_SESSION['GOLINK']) ? $_SESSION['GOLINK'] : preg_replace('/^GoL
 
 //数据处理
 if (!empty($t_url)) {
-    //判断取值是否加密
-    if ($t_url == base64_encode(base64_decode($t_url))) {
+
+    
+    // 判断是否启用base64
+    if (Get::Options('GoLinkUrlBlank') === 'open'){
+        // 解码Base64
         $t_url = base64_decode($t_url);
     }
 

@@ -30,8 +30,12 @@ if (Get::Options('GoLinkUrl') === 'open') {
                 $url = $matches[2];
                 error_log("Matched URL: " . $url); // 添加日志记录
                 if (strpos($url, $siteUrl) === false) {
-                    // 外部链接跳转
-                    $encodedUrl = base64_encode($url);
+                    // 判断是否启用Base64
+                    if (Get::Options('GoLinkUrlBlank') === 'open') {
+                        $encodedUrl = base64_encode($url);
+                    }if (Get::Options('GoLinkUrlBlank') === 'close') {
+                        $encodedUrl = $url;
+                    }
                     return '<a target="_blank" ' . $matches[1] . 'href="' . $siteUrl . '?GoLink&Url=' . $encodedUrl . '"' . $matches[3] . '>';
                 } else {
                     // 内部链接保持不变
