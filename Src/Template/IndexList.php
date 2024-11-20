@@ -30,7 +30,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     if ($thumbnailUrl){  
             ?>
             <div class="mdui-card-media">
-                <div class="thumbnail-post" style="background:url(<?php echo htmlspecialchars($thumbnailUrl); ?>);"></div>
+                <div class="thumbnail" style="background:url(<?php echo htmlspecialchars($thumbnailUrl); ?>);"></div>
             </div>
             <?php 
                     };

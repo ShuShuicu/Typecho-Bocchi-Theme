@@ -74,7 +74,7 @@ function themeFields($layout)
         NULL, 
         NULL,  
         _t('按钮内容'), 
-        _t('请填入按钮链接用于自定义文章底部按钮<hr>格式：<br>短按钮：[按钮名称](按钮链接)<br>长按钮：名称|介绍|链接|超链<hr>')
+        _t('请填入按钮链接用于自定义文章底部按钮<hr>格式：<br>短按钮：[按钮名称](按钮链接)<br>长按钮：名称|介绍|图片|超链<hr>')
     );
     $buttonStyle->input->setAttribute('style', 'width: 100%;height: 100px;');
     $layout->addItem($buttonStyle);

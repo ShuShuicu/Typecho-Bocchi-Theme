@@ -38,10 +38,16 @@ body .view-image {
 #translate {
     display: none;
 }
-.thumbnail-post {
+.thumbnail {
     height: 200px;
     background-position: center center !important;
     background-size: cover !important;
+}
+.thumbnail-post {
+    height: 250px;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-attachment: fixed !important;
 }
 .drawer-item {
     color: white;
