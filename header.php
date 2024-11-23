@@ -17,7 +17,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     |_______/  \______/  \_______/ \_______/|__/  |__/|__/         |__/   |__/  |__/ \_______/|__/ |__/ |__/ \_______/                                                                                                  
     前端基于MDUI框架
     后端基于TTDF框架 v<?php Get::FrameworkVer() ?> 
-    Powered by Typecho v<?php Get::TypechoVer() ?> 
+        Powered by Typecho v<?php Get::TypechoVer() ?> 
 -->
 <head>
     <meta charset="UTF-8">

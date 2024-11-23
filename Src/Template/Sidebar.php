@@ -25,13 +25,18 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </a>
                 <?php echo Get::Options("SidebarCustom"); ?>
                 <li class="mdui-subheader">页面</li>
-                <?php $pages = \Widget\Contents\Page\Rows::alloc(); while ($pages->next()): ?>
-                    <a href="<?php echo $pages->permalink; ?>">
-                        <li class="mdui-list-item mdui-ripple">
-                            <i class="mdui-list-item-icon mdui-icon material-icons">pages</i>
-                            <div class="mdui-list-item-content"><?php echo $pages->title; ?></div>
-                        </li>
-                    </a>
+                <?php 
+                    $pages = \Widget\Contents\Page\Rows::alloc(); 
+                    $blocked_cids = [Get::Options('SidebarPageCid')]; 
+                    while ($pages->next()): 
+                        if (in_array($pages->cid, $blocked_cids)) continue; // 如果当前页面的 cid 在屏蔽列表中，则跳过
+                ?>
+                <a href="<?php echo $pages->permalink; ?>">
+                    <li class="mdui-list-item mdui-ripple">
+                        <i class="mdui-list-item-icon mdui-icon material-icons">pages</i>
+                        <div class="mdui-list-item-content"><?php echo $pages->title; ?></div>
+                    </li>
+                </a>
                 <?php endwhile; ?>
                 <!-- 分类菜单 -->
                 <li class="mdui-subheader">分类统计</li>

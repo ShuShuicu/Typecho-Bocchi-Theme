@@ -20,9 +20,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 'open' => '允许',
                 'close' => '禁止',
             ),
-            'close',
+            'open',
             _t('Base64跳转'),
-            _t('是否启用明文(非base64)跳转，默认为允许。')
+            _t('文章链接跳转是否为Base64，建议开启防止网站被刷。')
         );
     $form->addInput($GoLinkUrlBlank);
 
@@ -45,9 +45,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 'open' => '启用',
                 'close' => '关闭',
             ),
-            'open',
+            'close',
             _t('面包蟹导航'),
-            _t('是否启用文章顶部面包蟹导航，默认为启用。')
+            _t('是否启用文章顶部面包蟹导航，默认为关闭。')
         );
     $form->addInput($PostNav);
     // REST API 是否开启

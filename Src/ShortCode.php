@@ -35,7 +35,8 @@ class ShortCodeParser {
         $callback = function ($matches) {
             $buttonLink = htmlspecialchars($matches[1], ENT_QUOTES, 'UTF-8');
             $buttonName = htmlspecialchars($matches[2], ENT_QUOTES, 'UTF-8');
-            return '<a target="_blank" rel="external nofollow" href="' . $buttonLink . '"><button class="mdui-btn mdui-btn-raised mzei-ripple mdui-color-theme-accent"><b>' . $buttonName . '</b></button></a>';
+            return '<a target="_blank" rel="external nofollow" href="' . $buttonLink . '">
+                <button class="mdui-btn mdui-btn-raised mzei-ripple mdui-color-theme-accent"><b>' . $buttonName . '</b></button></a>';
         };
         $content = preg_replace_callback($pattern, $callback, $content);
 

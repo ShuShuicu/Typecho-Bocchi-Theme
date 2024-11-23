@@ -20,7 +20,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <div class="mdui-m-y-2 mdui-typo mdui-card mdui-hoverable mdui-card-content">
                     <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
                         <?php if ($this->user->hasLogin()): ?>
-                            <?php _e('登录身份: '); ?><a href="<?php Get::Options('profileUrl'); ?>"><?php $this->user->screenName(); ?></a><?php _e('退出'); ?> &raquo;</a>
+                            登录身份：<?php echo $this->user->screenName; ?>
                         <?php else: ?>
                             <div class="mdui-textfield mdui-textfield-floating-label">
                                 <i class="mdui-icon material-icons">account_circle</i>

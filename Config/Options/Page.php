@@ -108,6 +108,15 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             _t('是否在侧边导航中默认展开显示翻译列表')
         );
         $form->addInput($SidebarTranslateOpen);
+    // 侧边屏蔽页面Cid
+    $SidebarPageCid = new Typecho_Widget_Helper_Form_Element_Text(
+        'SidebarPageCid',
+            NULL,
+            NULL,
+            _t('侧边屏蔽页面'),
+            _t('请填入需要屏蔽的页面Cid，多个Cid请用英文逗号隔开，留空不屏蔽。')
+        );
+    $form->addInput($SidebarPageCid);
     // 侧边自定义
     $SidebarCustom = new Typecho_Widget_Helper_Form_Element_Textarea(
         'SidebarCustom',
