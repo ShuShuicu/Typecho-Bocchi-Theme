@@ -1,5 +1,8 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit; 
+
+if (Get::Options('NewPost') === 'open') {
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_post'])) {
     // 获取数据库对象
     $db = Typecho_Db::get();
@@ -27,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_post'])) {
         'created'   => time(),
         'type'      => 'post',
         'status'    => 'hidden', // 默认隐藏状态
-        // 'slug'      =>  $title, // 自动生成别名
+        'slug'      =>  $title . '-' . time(), // 防止slug重复使用title+time方法
     );
 
     try {
@@ -40,3 +43,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_post'])) {
     }
 }
 ?>
+    <form action="" method="post">
+        <div class="mdui-textfield">
+            <input class="mdui-textfield-input" type="text" name="title" placeholder="请输入标题" required>
+        </div>
+        <div class="mdui-textfield">
+            <textarea class="mdui-textfield-input" rows="15" cols="50" type="textarea" name="content" placeholder="请使用Markdown格式输入文章内容。"></textarea>
+        </div>
+        <button type="submit" name="submit_post" class="mdui-float-right mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent submit" style="border-radius: 8px;">提交文章</button>
+    </form>
+<?php } else {
+    echo '投稿已关闭！';
+}

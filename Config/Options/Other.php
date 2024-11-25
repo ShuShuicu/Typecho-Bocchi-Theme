@@ -1,6 +1,18 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
+    // 前台投稿
+    $NewPost = new Typecho_Widget_Helper_Form_Element_Radio(
+        'NewPost',
+            array(
+                'open' => '启用',
+                'close' => '关闭',
+            ),
+            'close',
+            _t('<h3>功能设置</h3>前台投稿'),
+            _t('是否启用前台投稿，默认为关闭。')
+        );
+    $form->addInput($NewPost);
     // 外链转内链
     $GoLinkUrl = new Typecho_Widget_Helper_Form_Element_Radio(
         'GoLinkUrl',
@@ -9,7 +21,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 'close' => '关闭',
             ),
             'open',
-            _t('<h3>功能设置</h3>外转内链'),
+            _t('外转内链'),
             _t('是否启用文章外链转内链跳转，默认为启用。')
         );
     $form->addInput($GoLinkUrl);

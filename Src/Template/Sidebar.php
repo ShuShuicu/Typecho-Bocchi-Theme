@@ -6,9 +6,27 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <?php if (Get::Options('SidebarDisplay') === 'Author'){ ?>
 
             <div class="mdui-card-header">
-                <img class="mdui-card-header-avatar" src="<?php echo Get::Options('SidebarAuthorAvatar') ? Get::Options('SidebarAuthorAvatar') : GetTheme::AssetsUrl() . "/images/favicon.svg"; ?>">
-                <div class="mdui-card-header-title"><?php echo Get::Options('SidebarAuthor') ? Get::Options('SidebarAuthor') : Get::Options('title'); ?></div>
-                <div class="mdui-card-header-subtitle"><?php echo Get::Options('SidebarAuthorInfo') ? Get::Options('SidebarAuthorInfo') : Get::Options('description'); ?></div>
+                <img class="mdui-card-header-avatar" src="<?php 
+                    if ($this->user->hasLogin()) {
+                        echo \Typecho\Common::gravatarUrl($this->user->mail, 220, 'X', 'mm', $this->request->isSecure());
+                    } else {
+                        echo GetTheme::AssetsUrl() . "/images/favicon.svg";
+                    }
+                ?>">
+                <div class="mdui-card-header-title"><?php 
+                    if ($this->user->hasLogin()) {
+                        $this->user->screenName();
+                    } else {
+                        echo '未登录';
+                    }
+                ?></div>
+                <div class="mdui-card-header-subtitle"><?php 
+                    if ($this->user->hasLogin()) {
+                        echo $this->user->mail;
+                    } else {
+                        echo '登录后查看更多！';
+                    }
+                ?></div>
             </div>
         <?php } if (Get::Options('SidebarDisplay') === 'Logo') { ?>
             <img class="mdui-img-fluid" src="<?php echo Get::Options('SidebarLogo') ?>"/>

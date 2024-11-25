@@ -202,6 +202,96 @@ class Get {
     }
 }
 
+
+class GetRequest {
+    use ErrorHandler, SingletonWidget;    
+    private function __construct() {}
+    private function __clone() {}
+    private function __wakeup() {}
+
+    // 获取请求参数
+    public static function Query($key) {
+        try {
+            return self::getWidget()->request->get($key);
+        } catch (Exception $e) {
+            return self::handleError('获取请求参数失败', $e);
+        }
+    }
+
+    // 获取请求参数
+    public static function Post($key) {
+        try {
+            return self::getWidget()->request->filter('trim')->get($key);
+        } catch (Exception $e) {
+            return self::handleError('获取请求参数失败', $e);
+        }
+    }
+
+    // 获取请求参数
+    public static function Cookie($key) {
+        try {
+            return self::getWidget()->request->cookie($key);
+        } catch (Exception $e) {
+            return self::handleError('获取请求参数失败', $e);
+        }
+    }
+
+    // 获取请求参数
+    public static function Server($key) {
+        try {
+            return self::getWidget()->request->server($key);
+        } catch (Exception $e) {
+            return self::handleError('获取请求参数失败', $e);
+        }
+    }
+
+    // 判断是否为ajax请求
+    public static function IsAjax() {
+        try {
+            return self::getWidget()->request->isAjax();
+        } catch (Exception $e) {
+            return self::handleError('获取请求参数失败', $e, false);
+        }
+    }
+
+    // 判断是否为post请求
+    public static function IsPost() {
+        try {
+            return self::getWidget()->request->isPost();
+        } catch (Exception $e) {
+            return self::handleError('获取请求参数失败', $e, false);
+        }
+    }
+
+    // 判断是否为get请求
+    public static function IsGet() {
+        try {
+            return self::getWidget()->request->isGet();
+        } catch (Exception $e) {
+            return self::handleError('获取请求参数失败', $e, false);
+        }
+    }
+
+    // 判断是否为移动设备请求
+    public static function IsMobile() {
+        try {
+            return self::getWidget()->request->isMobile();
+        } catch (Exception $e) {
+            return self::handleError('获取请求参数失败', $e, false);
+        }
+    }
+
+    // 判断是否为https请求
+    public static function IsSecure() {
+        try {
+            return self::getWidget()->request->isSecure();
+        } catch (Exception $e) {
+            return self::handleError('获取请求参数失败', $e, false);
+        }
+    }
+
+}
+
 class GetTheme {
     use ErrorHandler;
     

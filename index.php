@@ -4,7 +4,7 @@
  * 如有任何不懂的问题欢迎联系作者<a href="https://space.bilibili.com/435502585"> · B站 · </a>提供帮助。
  * @package Bocchi
  * @author 鼠子Tomoriゞ
- * @version 1.0.5
+ * @version 1.0.6
  * @link https://blog.miomoe.cn/
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
