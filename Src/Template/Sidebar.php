@@ -3,31 +3,24 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
         <div class="mdui-drawer mdui-card" id="drawer" style="border-radius: 0;">
 
-        <?php if (Get::Options('SidebarDisplay') === 'Author'){ ?>
-
+        <?php 
+            if (Get::Options('SidebarDisplay') === 'Author'){ 
+                if ($this->user->hasLogin()) {
+        ?>
             <div class="mdui-card-header">
-                <img class="mdui-card-header-avatar" src="<?php 
-                    if ($this->user->hasLogin()) {
-                        echo \Typecho\Common::gravatarUrl($this->user->mail, 220, 'X', 'mm', $this->request->isSecure());
-                    } else {
-                        echo GetTheme::AssetsUrl() . "/images/favicon.svg";
-                    }
-                ?>">
-                <div class="mdui-card-header-title"><?php 
-                    if ($this->user->hasLogin()) {
-                        $this->user->screenName();
-                    } else {
-                        echo '未登录';
-                    }
-                ?></div>
-                <div class="mdui-card-header-subtitle"><?php 
-                    if ($this->user->hasLogin()) {
-                        echo $this->user->mail;
-                    } else {
-                        echo '登录后查看更多！';
-                    }
-                ?></div>
+                <img class="mdui-card-header-avatar" src="<?php echo \Typecho\Common::gravatarUrl($this->user->mail, 220, 'X', 'mm', $this->request->isSecure()); ?>">
+                <div class="mdui-card-header-title"><?php $this->user->screenName(); ?></div>
+                <div class="mdui-card-header-subtitle"><?php echo $this->user->mail; ?></div>
             </div>
+        <?php
+            } else {
+        ?>
+            <div class="mdui-card-header">
+                <img class="mdui-card-header-avatar" src="<?php echo Get::Options('FaviconUrl') ? Get::Options('FaviconUrl') : GetTheme::AssetsUrl() . "/images/favicon.svg"; ?>">
+                <div class="mdui-card-header-title"><?php echo Get::Options('title'); ?></div>
+                <div class="mdui-card-header-subtitle"><?php echo Get::Options('description'); ?></div>
+            </div>
+        <?php } ?>
         <?php } if (Get::Options('SidebarDisplay') === 'Logo') { ?>
             <img class="mdui-img-fluid" src="<?php echo Get::Options('SidebarLogo') ?>"/>
         <?php } ?>
@@ -94,4 +87,3 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <?php }; ?>
             </ul>
         </div>
-        

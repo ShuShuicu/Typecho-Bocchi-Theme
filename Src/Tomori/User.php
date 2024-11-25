@@ -11,7 +11,7 @@ if ($this->user->hasLogin()) {
                 _e('最后登录： %s', $logged->word());
             }
         ?>
-        <a class="mdui-float-right" href="<?php Get::Options('logoutUrl'); ?>" title="Logout">退出登录</a>
+        <a class="mdui-float-right" href="<?php echo Get::Options('logoutUrl'); ?>" title="Logout">退出登录</a>
     </div>
 </div>
 <div class="mdui-m-y-1 mdui-card mdui-card-content">
