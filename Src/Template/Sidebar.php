@@ -1,6 +1,7 @@
 <?php 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
+    <div id="Sidebar">
         <div class="mdui-drawer mdui-card" id="drawer" style="border-radius: 0;">
 
         <?php 
@@ -8,27 +9,27 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 if ($this->user->hasLogin()) {
         ?>
             <div class="mdui-card-header">
-                <img class="mdui-card-header-avatar" src="<?php echo \Typecho\Common::gravatarUrl($this->user->mail, 220, 'X', 'mm', $this->request->isSecure()); ?>">
-                <div class="mdui-card-header-title"><?php $this->user->screenName(); ?></div>
-                <div class="mdui-card-header-subtitle"><?php echo $this->user->mail; ?></div>
+                <img class="mdui-card-header-avatar" :src="UserAvatar">
+                <div class="mdui-card-header-title">{{ UserName }}</div>
+                <div class="mdui-card-header-subtitle">{{ UserMail }}</div>
             </div>
         <?php
             } else {
         ?>
             <div class="mdui-card-header">
-                <img class="mdui-card-header-avatar" src="<?php echo Get::Options('FaviconUrl') ? Get::Options('FaviconUrl') : GetTheme::AssetsUrl() . "/images/favicon.svg"; ?>">
-                <div class="mdui-card-header-title"><?php echo Get::Options('title'); ?></div>
-                <div class="mdui-card-header-subtitle"><?php echo Get::Options('description'); ?></div>
+                <img class="mdui-card-header-avatar" :src="Favicon">
+                <div class="mdui-card-header-title">{{ Title }}</div>
+                <div class="mdui-card-header-subtitle">{{ Description }}</div>
             </div>
         <?php } ?>
         <?php } if (Get::Options('SidebarDisplay') === 'Logo') { ?>
-            <img class="mdui-img-fluid" src="<?php echo Get::Options('SidebarLogo') ?>"/>
+            <img class="mdui-img-fluid" :src="SidebarLogo"/>
         <?php } ?>
             <div class="mdui-divider"></div>
 
             <ul class="mdui-list">
                 <!-- 主导航项 -->
-                <a href="<?php echo Get::Options("siteUrl"); ?>">
+                <a :href="SiteUrl">
                     <li class="mdui-list-item mdui-ripple">
                         <i class="mdui-list-item-icon mdui-icon material-icons">home</i>
                         <div class="mdui-list-item-content">首页</div>
@@ -87,3 +88,19 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <?php }; ?>
             </ul>
         </div>
+    </div>
+<script>
+    new Vue({
+    el: '#Sidebar',
+    data: {
+        SiteUrl: '<?php Get::SiteUrl(); ?>',
+        Title: '<?php echo Get::Options('title'); ?>',
+        Description: '<?php echo Get::Options('description'); ?>',
+        Favicon: '<?php echo Get::Options('FaviconUrl') ? Get::Options('FaviconUrl') : GetTheme::AssetsUrl() . "/images/favicon.svg"; ?>',
+        UserName: '<?php echo $this->user->screenName; ?>',
+        UserMail: '<?php echo $this->user->mail; ?>',
+        UserAvatar: '<?php echo \Typecho\Common::gravatarUrl($this->user->mail, 220, 'X', 'mm', $this->request->isSecure()); ?>',
+        SidebarLogo: '<?php echo Get::Options('SidebarLogo') ?>',
+    }
+})
+</script>

@@ -1,5 +1,8 @@
 <?php 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+?>
+<div id="Post">
+<?php
 // 判断面包蟹导航
 if (Get::Options('PostNav') === 'open') {
 ?>
@@ -25,43 +28,24 @@ if (Get::Options('PostNav') === 'open') {
                 }   
             ?>
     <div class="mdui-card-primary">
-        <div class="mdui-card-primary-title"><?php GetPost::Title(); ?></div>
+        <div class="mdui-card-primary-title">{{ Title }}</div>
         <div class="mdui-divider"></div>
         <div class="mdui-card-actions mdui-card-primary-subtitle">
-            作者：<?php GetPost::Author(); ?>丨<?php GetPost::Category(',', true); ?> · <?php GetPost::Tags(',', true); ?>丨字数：<?php $zishu=mb_strlen($this->content); echo $zishu; ?> · <?php GetPost::Date(); ?>
+            作者：{{ Author }}丨<a v-html="Category"></a> · <a v-html="Tag"></a>丨字数：{{ ZiShu }} · {{ Date }}
         </div>
         <div class="mdui-divider"></div>
         <div class="mdui-card-content">
-            <div class="mdui-typo" id="PostContent"><?php GetPost::Content(); ?></div>
+            <div class="mdui-typo" id="PostContent" v-html="Content"></div>
             <div>
 
     <div>
-    <fieldset style="
-        border: 1px dashed #008cff;
-        padding: 10px;
-        border-radius: 5px;
-        line-height: 2em;
-        color: #6d6d6d;
-    ">
-    <legend align="center" style="
-        width: 30%;
-        text-align: center;
-        background-color: #008cff;
-        border-radius: 5px;
-        background-image: linear-gradient(to right, #FFCC99, #FF99CC); text-align:center;" ">
-        文章版权声明
-    </legend>
-            本网站名称：<span style=" color: #3333ff"><span style="color: #FF6666; font-size: 18px"><strong><?php echo Get::Options('title') ?></strong></span></span><br />
-            本站永久网址：<font color="#FF6666"><?php echo Get::Options('siteUrl') ?></font><br />
-            <?php echo Get::Options('PostCopyright') ?>
-        </fieldset>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<?php if (Get::Fields('PostStyleButton') === 'open') : ?>
+<?php if (Get::Fields('PostStyleButton') === 'open') { ?>
 
 <div class="mdui-card mdui-card-content mdui-m-b-2">
 
@@ -121,4 +105,33 @@ if (Get::Options('PostNav') === 'open') {
     }
     ?>
 </div>
-<?php endif; ?>
+<?php }; ?>
+
+<div class="mdui-card mdui-m-b-2 mdui-card-primary">
+    <fieldset style="border: 1px dashed #008cff;padding: 10px;border-radius: 5px;line-height: 2em;color: #6d6d6d;">
+    <legend align="center" style="width: 30%;text-align: center;background-color: #008cff;border-radius: 5px;background-image: linear-gradient(to right, #FFCC99, #FF99CC); text-align:center;">
+        文章版权声明
+    </legend>
+            本网站名称：<span style=" color: #3333ff"><span style="color: #FF6666; font-size: 18px"><strong>{{ SiteTitle }}</strong></span></span><br />
+            本站永久网址：<font color="#FF6666">{{ SiteUrl }}</font><br />
+            <?php echo Get::Options('PostCopyright'); ?>
+    </fieldset>
+</div>
+
+</div>
+<script>
+new Vue({
+    el: '#Post',
+    data: {
+        SiteTitle: '<?php echo Get::Options('title'); ?>',
+        SiteUrl: '<?php Get::SiteUrl(); ?>',
+        Title: '<?php GetPost::Title(); ?>',
+        Date: '<?php GetPost::Date(); ?>',
+        Tag: '<?php GetPost::Tags(); ?>',
+        Content: '<?php GetPost::Content(); ?>',
+        Author: '<?php GetPost::Author(); ?>',
+        Category: '<?php GetPost::Category(',', true); ?>',
+        ZiShu: '<?php $zishu=mb_strlen($this->content); echo $zishu; ?>',
+    }
+})
+</script>

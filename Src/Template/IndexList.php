@@ -2,6 +2,7 @@
 // 首页列表模板
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
+<div id="IndexList">
 <?php
     $count = 0;
     while($this->next()): 
@@ -61,6 +62,18 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
 <div class="mdui-m-y-1 mdui-valign mdui-card mdui-hoverable mdui-card-content">
     <?php Get::PageLink('<div class="mdui-ripple mdui-btn mdui-btn-icon mdui-color-theme"><i class="material-icons mdui-icon">chevron_left</i></div>'); ?>
-        <span class="mdui-typo-body-1-opacity mdui-text-center" style="flex-grow:1">第 <?php echo Get::CurrentPage() > 1 ? Get::CurrentPage() : 1; ?> 页 / 共 <?php echo ceil($this->getTotal() / $this->parameter->pageSize); ?> 页</span>
+        <span class="mdui-typo-body-1-opacity mdui-text-center" style="flex-grow:1">第 {{ CurrentPage }} 页 / 共 {{ PageSize }} 页</span>
     <?php Get::PageLink('<div class="mdui-ripple mdui-btn mdui-btn-icon mdui-color-theme"><i class="material-icons mdui-icon">chevron_right</i></div>','next'); ?>
 </div>
+
+</div>
+
+<script>
+new Vue({
+    el: '#IndexList',
+    data: {
+        CurrentPage: '<?php echo Get::CurrentPage() > 1 ? Get::CurrentPage() : 1; ?>',
+        PageSize: '<?php echo ceil($this->getTotal() / $this->parameter->pageSize); ?>',
+    }
+})
+</script>

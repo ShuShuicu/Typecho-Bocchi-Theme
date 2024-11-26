@@ -1,17 +1,20 @@
 <?php 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit; 
+?>
+<div id="User">
+<?php
 if ($this->user->hasLogin()) {
 ?>
 <link rel="stylesheet" href="<?php echo GetTheme::AssetsUrl(); ?>/UserStyle.css?ver=<?php GetTheme::Ver(); ?>">
 <div class="mdui-card mdui-card-content mdui-m-b-2">
-    <div class="mdui-center"><?php echo $this->user->screenName; ?>，您好！
+    <div class="mdui-center">{{ UserName }}，您好！
         <?php
             if ($this->user->logged > 0) {
                 $logged = new \Typecho\Date($user->logged);
                 _e('最后登录： %s', $logged->word());
             }
         ?>
-        <a class="mdui-float-right" href="<?php echo Get::Options('logoutUrl'); ?>" title="Logout">退出登录</a>
+        <a class="mdui-float-right" :href="UserOutUrl" title="Logout">退出登录</a>
     </div>
 </div>
 <div class="mdui-m-y-1 mdui-card mdui-card-content">
@@ -24,12 +27,12 @@ if ($this->user->hasLogin()) {
     <div class="mdui-divider"></div>
     <div id="个人资料" class="mdui-card-content">
         <div class="mdui-card-header">
-            <img class="mdui-card-header-avatar" src="<?php echo \Typecho\Common::gravatarUrl($this->user->mail, 220, 'X', 'mm', $this->request->isSecure()); ?>" />
-            <div class="mdui-card-header-title"><?php echo $this->user->screenName; ?></div>
-            <div class="mdui-card-header-subtitle"><?php echo $this->user->mail; ?></div>
+            <img class="mdui-card-header-avatar" :src="UserAvatar" />
+            <div class="mdui-card-header-title">{{ UserName }}</div>
+            <div class="mdui-card-header-subtitle">{{ UserMail }}</div>
         </div>
         <h3>资料设置</h3>
-            头像服务由 <a href="<?php echo Get::Options('AvatarCdn') ?>"><?php echo Get::Options('AvatarCdn') ?></a> 提供
+            头像服务由 <a :href="AvatarCdn">{{ AvatarCdn }}</a> 提供
         <?php \Widget\Users\Profile::alloc()->profileForm()->render(); ?>
     </div>
     <div id="撰写设置" class="mdui-card-content">
@@ -39,6 +42,19 @@ if ($this->user->hasLogin()) {
         <?php GetBocchi::Tomori('User/NewPost'); ?>
     </div>
 </div>
+
+<script>
+new Vue({
+    el: '#User',
+    data: {
+        AvatarCdn: '<?php echo Get::Options('AvatarCdn') ?>',
+        UserName: '<?php echo $this->user->screenName; ?>',
+        UserMail: '<?php echo $this->user->mail; ?>',
+        UserOutUrl: '<?php echo Get::Options('logoutUrl'); ?>',
+        UserAvatar: '<?php echo \Typecho\Common::gravatarUrl($this->user->mail, 220, 'X', 'mm', $this->request->isSecure()); ?>',
+    }
+})
+</script>
 
 <?php
 } else {
@@ -57,3 +73,5 @@ if ($this->user->hasLogin()) {
 </div>
 <?php 
 }
+?>
+</div>

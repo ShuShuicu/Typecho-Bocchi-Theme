@@ -3,9 +3,7 @@
  * 这里是前端输出中的Footer内容。
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-?>
-<?php
-GetBocchi::Template('Footer');
+    GetBocchi::Template('Footer');
         $jsFiles = [
             'ttdf',
             'translate.min',
