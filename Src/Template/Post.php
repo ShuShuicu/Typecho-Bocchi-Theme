@@ -35,7 +35,7 @@ if (Get::Options('PostNav') === 'open') {
         </div>
         <div class="mdui-divider"></div>
         <div class="mdui-card-content">
-            <div class="mdui-typo" id="PostContent" v-html="Content"></div>
+            <div class="mdui-typo" id="PostContent"><?php GetPost::Content(); ?></div>
             <div>
 
     <div>
@@ -128,7 +128,6 @@ new Vue({
         Title: '<?php GetPost::Title(); ?>',
         Date: '<?php GetPost::Date(); ?>',
         Tag: '<?php GetPost::Tags(); ?>',
-        Content: '<?php GetPost::Content(); ?>',
         Author: '<?php GetPost::Author(); ?>',
         Category: '<?php GetPost::Category(',', true); ?>',
         ZiShu: '<?php $zishu=mb_strlen($this->content); echo $zishu; ?>',

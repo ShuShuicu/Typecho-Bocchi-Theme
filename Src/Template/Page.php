@@ -9,7 +9,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 {{ Date }}
             </div>
             <div class="mdui-divider"></div>
-            <div class="mdui-card-content mdui-typo" id="PostContent" v-html="Content"></div>
+            <div class="mdui-card-content mdui-typo" id="PostContent"><?php GetPost::Content(); ?></div>
         </div>
     </div>
 </div>
@@ -19,7 +19,6 @@ new Vue({
     data: {
         Title: '<?php GetPost::Title(); ?>',
         Date: '<?php GetPost::Date(); ?>',
-        Content: '<?php GetPost::Content(); ?>',
     }
 })
 </script>
