@@ -4,7 +4,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 <div id="Page">
     <div class="mdui-card mdui-m-b-2">
         <div class="mdui-card-primary">
-            <div class="mdui-card-primary-title">{{ Ttile }}</div>
+            <div class="mdui-card-primary-title">{{ Title }}</div>
             <div class="mdui-card-primary-subtitle">
                 {{ Date }}
             </div>
