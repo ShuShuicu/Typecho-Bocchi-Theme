@@ -14,7 +14,10 @@ if ($this->user->hasLogin()) {
                 _e('最后登录： %s', $logged->word());
             }
         ?>
-        <a class="mdui-float-right" :href="UserOutUrl" title="Logout">退出登录</a>
+        <div class="mdui-float-right">
+            <a :href="AuthorUrl" title="Logout">我的空间</a>
+            丨<a :href="UserOutUrl" title="Logout">退出登录</a>
+        </div>
     </div>
 </div>
 <div class="mdui-m-y-1 mdui-card mdui-card-content">
@@ -32,7 +35,7 @@ if ($this->user->hasLogin()) {
             <div class="mdui-card-header-subtitle">{{ UserMail }}</div>
         </div>
         <h3>资料设置</h3>
-            头像服务由 <a :href="AvatarCdn">{{ AvatarCdn }}</a> 提供
+        <br>头像服务由 <a :href="AvatarCdn">{{ AvatarCdn }}</a> 提供
         <?php \Widget\Users\Profile::alloc()->profileForm()->render(); ?>
     </div>
     <div id="撰写设置" class="mdui-card-content">
@@ -49,9 +52,11 @@ new Vue({
     data: {
         AvatarCdn: '<?php echo Get::Options('AvatarCdn') ?>',
         UserName: '<?php echo $this->user->screenName; ?>',
+        UserUid: '<?php $this->user->uid(); ?>',
         UserMail: '<?php echo $this->user->mail; ?>',
         UserOutUrl: '<?php echo Get::Options('logoutUrl'); ?>',
         UserAvatar: '<?php echo \Typecho\Common::gravatarUrl($this->user->mail, 220, 'X', 'mm', $this->request->isSecure()); ?>',
+        AuthorUrl: '<?php Get::SiteUrl(); ?>author/<?php $this->user->uid(); ?>',
     }
 })
 </script>

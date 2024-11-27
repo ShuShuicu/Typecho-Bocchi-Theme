@@ -38,10 +38,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <script src="<?php echo GetTheme::AssetsUrl() . "/vue.min.js"; ?>?ver=<?php GetTheme::Ver(); ?>"></script>
     <title><?php $archiveTitle = GetPost::ArchiveTitle(
             [
-                "category" => _t("「%s」分类"),
+                "category" => _t("%s 分类"),
                 "search" => _t("搜索结果"),
-                "tag" => _t("「%s」标签"),
-                "author" => _t("「%s」发布的文章"),
+                "tag" => _t("%s 标签"),
+                "author" => _t("%s的空间"),
             ],""," - "
         );
         echo $archiveTitle;
