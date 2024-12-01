@@ -31,11 +31,19 @@ if (Get::Options('PostNav') === 'open') {
             <div class="mdui-card-primary-title">{{ Title }}</div>
             <div class="mdui-divider"></div>
             <div class="mdui-card-actions mdui-card-primary-subtitle">
-                作者：<a href="<?php $this->author->permalink(); ?>">{{ Author }}</a>丨<a v-html="Category"></a> · <a v-html="Tag"></a>丨字数：{{ ZiShu }} · {{ Date }}
+                作者：<a :href="AuthorUrl">{{ Author }}</a>丨<a v-html="Category"></a> · <a v-html="Tag"></a>丨字数：{{ ZiShu }} · {{ Date }}
             </div>
             <div class="mdui-divider"></div>
             <div class="mdui-card-content">
-                <div class="mdui-typo" id="PostContent"><?php GetPost::Content(); ?></div>
+                <div class="mdui-typo" id="PostContent">
+                    <?php if (Get::Fields('PostLoginSee') == 'open'){ 
+                            if($this->user->hasLogin()){
+                                GetPost::Content();
+                            }else{
+                                echo '抱歉，本文需要登录查看！如果你还没有账号请前往用户中心注册。';
+                            }
+                    } ?>
+                </div>
             </div>
         </div>
     </div>
@@ -124,6 +132,7 @@ if (Get::Options('PostNav') === 'open') {
             Date: '<?php GetPost::Date(); ?>',
             Tag: '<?php GetPost::Tags(); ?>',
             Author: '<?php GetPost::Author(); ?>',
+            AuthorUrl: '<?php $this->author->permalink(); ?>',
             Category: '<?php GetPost::Category(',', true); ?>',
             ZiShu: '<?php $zishu=mb_strlen($this->content); echo $zishu; ?>',
         }

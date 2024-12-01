@@ -217,7 +217,7 @@ translate.ignore.class = [
 // PJAX事件处理
 $(document)
   .pjax(
-    `a[href^="${window.location.origin}"]:not(a[target="_blank"], a[no-pjax])`,
+    `a[href^="${window.location.origin}"]:not(a[target="_blank"], a[no-pjax], button[no-pjax])`,
     pjaxOptions
   )
   .on('pjax:send', () => {

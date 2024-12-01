@@ -1,8 +1,21 @@
 <?php 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-
 function themeFields($layout) 
 {
+
+    // 是否登录查看
+    $PostLoginSee = new Typecho_Widget_Helper_Form_Element_Select(
+        'PostLoginSee',
+        array(
+            'close' => '无需登录',
+            'open' => '需要登录'
+        ),
+        'close',
+        _t('查看权限'),
+        _t('设置文章的查看权限，默认为无需登录查看')
+    );
+    $layout->addItem($PostLoginSee);
+
     // 是否缩略图
     $PostStyleThumbnail = new Typecho_Widget_Helper_Form_Element_Radio(
         'PostStyleThumbnail',

@@ -17,7 +17,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     |_______/  \______/  \_______/ \_______/|__/  |__/|__/         |__/   |__/  |__/ \_______/|__/ |__/ |__/ \_______/                                                                                                  
     前端基于MDUI框架
     后端基于TTDF框架 v<?php Get::FrameworkVer() ?> 
-        Powered by Typecho v<?php Get::TypechoVer() ?> 
+    Powered by Typecho v<?php Get::TypechoVer() ?> 
 -->
 <head>
     <meta charset="UTF-8">
@@ -25,14 +25,14 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <meta name="renderer" content="webkit" />
     <link href="<?php echo Get::Options('FaviconUrl') ? Get::Options('FaviconUrl') : GetTheme::AssetsUrl() . "/images/favicon.svg"; ?>" rel="icon" />
     <?php 
-            $cssFiles = [
-                'style',
-                'code/BlackMac',
-                'mdui/css/mdui.min',
-                'nprogress/nprogress.min',
-            ];
-            foreach ($cssFiles as $css):
-        ?>
+        $cssFiles = [
+            'style',
+            'code/BlackMac',
+            'mdui/css/mdui.min',
+            'nprogress/nprogress.min',
+        ];
+        foreach ($cssFiles as $css):
+    ?>
     <link rel="stylesheet" href="<?php echo GetTheme::AssetsUrl() . "/" . $css , '.css'; ?>?ver=<?php GetTheme::Ver(); ?>">
     <?php endforeach; ?>
     <script src="<?php echo GetTheme::AssetsUrl() . "/vue.min.js"; ?>?ver=<?php GetTheme::Ver(); ?>"></script>

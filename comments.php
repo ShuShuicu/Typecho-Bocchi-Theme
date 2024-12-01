@@ -18,7 +18,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                     <?php $comments->cancelReply(); ?>
                 </div>
                 <div class="mdui-m-y-2 mdui-typo mdui-card mdui-hoverable mdui-card-content">
-                    <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form">
+                    <form method="post" action="<?php $this->commentUrl() ?>" id="comment-form" role="form" novalidate>
                         <?php if ($this->user->hasLogin()): ?>
                             登录身份：<?php echo $this->user->screenName; ?>
                         <?php else: ?>
@@ -42,7 +42,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                         <div class="mdui-textfield">
                             <textarea class="mdui-textfield-input" rows="4" cols="50" name="text" placeholder="万水千山总是情，评论一句行不行~"><?php $this->remember('text'); ?></textarea>
                         </div>
-                        <button type="submit" class="mdui-float-right mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent submit" style="border-radius: 8px;"><?php _e('提交评论'); ?></button>
+                        <button no-pjax type="submit" class="mdui-float-right mdui-btn mdui-btn-raised mdui-ripple mdui-color-theme-accent submit" style="border-radius: 8px;"><?php _e('提交评论'); ?></button>
                     </form>
                 </div>
                 <?php else: ?>
