@@ -36,13 +36,7 @@ if (Get::Options('PostNav') === 'open') {
             <div class="mdui-divider"></div>
             <div class="mdui-card-content">
                 <div class="mdui-typo" id="PostContent">
-                    <?php if (Get::Fields('PostLoginSee') == 'open'){ 
-                            if($this->user->hasLogin()){
-                                GetPost::Content();
-                            }else{
-                                echo '抱歉，本文需要登录查看！如果你还没有账号请前往用户中心注册。';
-                            }
-                    } ?>
+                    <?php GetPost::Content(); ?>
                 </div>
             </div>
         </div>

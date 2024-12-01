@@ -24,7 +24,6 @@ Bocchi主题,前端基于MDUI1后端基于TTDF框架开发的一款Typecho博客
 
 ## 更新日志
 ### 1.0.9
- - 新增登录查看
  - 优化Post.php
  - 优化IndexList.php
  - 优化作者评论输出
