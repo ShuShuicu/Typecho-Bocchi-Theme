@@ -240,7 +240,7 @@ $(document)
   });
 
 // 查看当前忽略的 class
-console.log(translate.ignore.class);
+// console.log(translate.ignore.class);
 
   if (typeof translate !== 'undefined') {
     translate.language.setDefaultTo('chinese_simplified');
