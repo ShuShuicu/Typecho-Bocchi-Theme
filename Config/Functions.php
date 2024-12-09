@@ -5,7 +5,6 @@
  * @link https://blog.miomoe.cn/
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-
 /**
  * 加载时间
  * Blog.MioMoe.Cn
@@ -28,7 +27,6 @@ function timer_stop( $display = 0, $precision = 3 ) {
     }
     return $r;
 }
-
 /**
  * 统计字数
  * Blog.MioMoe.Cn

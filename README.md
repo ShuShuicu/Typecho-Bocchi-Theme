@@ -23,6 +23,11 @@ Bocchi主题,前端基于MDUI1后端基于TTDF框架开发的一款Typecho博客
 | 纸片 | [c url="链接" img="图片链接"]文字[/c] |
 
 ## 更新日志
+### 1.1.0
+ - 新增Drive
+ - 更新TTDF框架
+ > 特别感谢GitHub[@Sualiu](https://github.com/Sualiu)
+
 ### 1.0.9
  - 优化Post.php
  - 优化IndexList.php

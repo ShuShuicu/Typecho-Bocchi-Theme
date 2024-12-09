@@ -38,18 +38,13 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 }; 
             ?>
                 <div class="mdui-card-primary">
-                    <div class="mdui-card-primary-title">
-                        <?php GetPost::Title(); ?>
-                    </div>
-                    <div class="mdui-card-primary-subtitle">
-                        <?php GetPost::Date(); ?> · <?php GetPost::Category() ?> · <?php GetPost::Tags() ?>
-                    </div>
+                    <div class="mdui-card-primary-title"><?php GetPost::Title(); ?></div>
+                    <div class="mdui-card-primary-subtitle"><?php GetPost::Date(); ?> · <?php GetPost::Category() ?> · <?php GetPost::Tags() ?></div>
                     <?php 
-                        // 判断是否显示Excerpt
-                        if(Get::Options('IndexStyleExcerpt') === 'open'){ 
-                    ?>
-                        <div class="mdui-divider"></div>
-                        <div class="mdui-card-content"><?php GetPost::Excerpt(100); ?> ...</div>
+                    // 判断是否显示Excerpt
+                    if(Get::Options('IndexStyleExcerpt') === 'open'){ ?>
+                    <div class="mdui-divider"></div>
+                    <div class="mdui-card-content"><?php GetPost::Excerpt(100); ?> ...</div>
                     <?php } ?>
                 </div>
 
@@ -66,32 +61,19 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
 
 <div class="mdui-m-y-1 mdui-valign mdui-card mdui-hoverable mdui-card-content">
-    <a v-if="CurrentPage > 1" :href="prevPageUrl" class="mdui-ripple mdui-btn mdui-btn-icon mdui-color-theme">
-        <i class="material-icons mdui-icon">chevron_left</i>
-    </a>
-    <span class="mdui-typo-body-1-opacity mdui-text-center" style="flex-grow:1">
-        第 {{ CurrentPage }} 页 / 共 {{ TotalPages }} 页
-    </span>
-    <a v-if="CurrentPage < TotalPages" :href="nextPageUrl" class="mdui-ripple mdui-btn mdui-btn-icon mdui-color-theme">
-        <i class="material-icons mdui-icon">chevron_right</i>
-    </a>
+    <?php Get::PageLink('<div class="mdui-ripple mdui-btn mdui-btn-icon mdui-color-theme"><i class="material-icons mdui-icon">chevron_left</i></div>'); ?>
+        <span class="mdui-typo-body-1-opacity mdui-text-center" style="flex-grow:1">第 {{ CurrentPage }} 页 / 共 {{ PageSize }} 页</span>
+    <?php Get::PageLink('<div class="mdui-ripple mdui-btn mdui-btn-icon mdui-color-theme"><i class="material-icons mdui-icon">chevron_right</i></div>','next'); ?>
 </div>
+
 </div>
 
 <script>
 new Vue({
     el: '#IndexList',
     data: {
-        CurrentPage: <?php echo $this->currentPage; ?>,
-        TotalPages: <?php echo ceil($this->getTotal() / $this->parameter->pageSize); ?>,
-    },
-    computed: {
-        prevPageUrl() {
-            return this.CurrentPage > 1 ? "<?php echo Get::Options('siteUrl'); ?>page/" + (this.CurrentPage - 1) + "/" : '#';
-        },
-        nextPageUrl() {
-            return this.CurrentPage < this.TotalPages ? "<?php echo Get::Options('siteUrl'); ?>page/" + (this.CurrentPage + 1) + "/" : '#';
-        }
+        CurrentPage: '<?php echo Get::CurrentPage() > 1 ? Get::CurrentPage() : 1; ?>',
+        PageSize: '<?php echo ceil($this->getTotal() / $this->parameter->pageSize); ?>',
     }
-});
+})
 </script>

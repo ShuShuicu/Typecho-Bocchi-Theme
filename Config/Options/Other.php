@@ -1,6 +1,16 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 
+    // Drive目录
+    $MioDriveDir = new Typecho_Widget_Helper_Form_Element_Text(
+        'MioDriveDir',
+            NULL,
+            'Files',
+            _t('Drive目录'),
+            _t('请填入Drive功能的目录，默认为' . THEME_URL . ' /Src/Tomori/Drive 下的 Files 目录。')
+        );
+    $form->addInput($MioDriveDir);
+
     // 前台投稿
     $NewPost = new Typecho_Widget_Helper_Form_Element_Radio(
         'NewPost',
