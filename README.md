@@ -25,6 +25,7 @@ Bocchi主题,前端基于MDUI1后端基于TTDF框架开发的一款Typecho博客
 ## 更新日志
 ### 1.1.0
  - 新增Drive
+ - 一键关闭评论
  - 更新TTDF框架
  > 特别感谢GitHub[@Sualiu](https://github.com/Sualiu)
 

@@ -150,8 +150,8 @@ $OptionsFiles = [
     'Page',
     'Other'
 ];
-foreach ($OptionsFiles as $OptionsFile):
+foreach ($OptionsFiles as $OptionsFile){
     require_once 'Options/' . $OptionsFile . '.php';
-endforeach;
+};
 }
 ?>

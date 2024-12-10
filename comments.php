@@ -1,5 +1,6 @@
 <?php 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+if (Get::Options('PostComments') === 'open') {
 ?>
 <div id="comments">
     <?php $this->comments()->to($comments); ?>
@@ -56,3 +57,4 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </div>
     </div>
 </div>
+<?php }

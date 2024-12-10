@@ -6,11 +6,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         'MioDriveDir',
             NULL,
             'Files',
-            _t('Drive目录'),
+            _t('<h3>功能设置</h3>Drive目录'),
             _t('请填入Drive功能的目录，默认为' . THEME_URL . ' /Src/Tomori/Drive 下的 Files 目录。')
         );
     $form->addInput($MioDriveDir);
-
     // 前台投稿
     $NewPost = new Typecho_Widget_Helper_Form_Element_Radio(
         'NewPost',
@@ -19,10 +18,22 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 'close' => '关闭',
             ),
             'close',
-            _t('<h3>功能设置</h3>前台投稿'),
+            _t('前台投稿'),
             _t('是否启用前台投稿，默认为关闭。')
         );
     $form->addInput($NewPost);
+    // 是否文章评论
+    $PostComments = new Typecho_Widget_Helper_Form_Element_Radio(
+        'PostComments',
+            array(
+                'open' => '启用',
+                'close' => '关闭',
+            ),
+            'open',
+            _t('文章评论'),
+            _t('是否启用文章评论，应付管局用，默认为开启。')
+        );
+    $form->addInput($PostComments);
     // 外链转内链
     $GoLinkUrl = new Typecho_Widget_Helper_Form_Element_Radio(
         'GoLinkUrl',
