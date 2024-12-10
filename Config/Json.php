@@ -113,7 +113,7 @@ function outputJsonData() {
                     'title' => Get::Options('title'),
                     'description' => Get::Options('description'),
                     'keywords' => Get::Options('keywords'),
-                    'favicon' => Get::Options('faviconUrl'),
+                    'favicon' => Get::Options('FaviconUrl'),
                     'siteUrl' => Get::Options('siteUrl'),
                     'timezone' => Get::Options('timezone'),
                     'lang' => 'zh-CN',
