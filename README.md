@@ -1,11 +1,14 @@
-# Bocchi Theme
+![logo](Assets/images/logo.png)
 
-Bocchi主题,前端基于MDUI1后端基于TTDF框架开发的一款Typecho博客主题。
+Bocchi主题，前端基于MDUI1后端基于TTDF框架开发的一款Typecho博客主题。
+
+ > 特别感谢GitHub[@Sualiu](https://github.com/Sualiu)对TTDF框架的贡献！
 
 ## 主题特点
 
  - 自适应
  - 响应式
+ - 用户中心
  - REST API
  - 文章短代码
  - 多种文章布局
@@ -27,7 +30,7 @@ Bocchi主题,前端基于MDUI1后端基于TTDF框架开发的一款Typecho博客
  - 新增Drive
  - 一键关闭评论
  - 更新TTDF框架
- > 特别感谢GitHub[@Sualiu](https://github.com/Sualiu)
+
 
 ### 1.0.9
  - 优化Post.php

@@ -3,7 +3,7 @@
  * 欢迎使用Typecho主题模板开发框架！
  * 使用说明 / 开发文档请查看README.md；
  * 如有任何不懂的问题欢迎联系作者<a href="https://space.bilibili.com/435502585"> · B站 · </a>提供帮助。
- * @author 鼠子Tomoriゞ
+ * @author 鼠子(Tomoriゞ)、Sualiu
  * @version 1.1.4
  * @link https://blog.miomoe.cn/
  */
@@ -16,17 +16,14 @@ require_once 'Options.php';
 require_once 'Functions.php';
 // 引入Json功能
 require_once 'Json.php';
+// 引入工具类
+require_once 'Tools.php';
 
-// 设置主题目录
-if (!defined('THEME_URL')) {
-    define("THEME_URL", str_replace(Helper::options()->rootUrl, '', Helper::options()->themeUrl));
-}
-// 设置主题目录名称
-if (!defined('THEME_NAME')) {
-    define("THEME_NAME", str_replace("/usr/themes/", "", THEME_URL));
-}
+
+// 设置框架版本
+define('__FRAMEWORK_VER__', '1.1.4');
 
 // 设置错误日志路径
-ini_set('error_log', __TYPECHO_ROOT_DIR__ . THEME_URL . '/Config/error.log');
+ini_set('error_log', GetTheme::Dir(false) . '/Config/error.log');
 // 设置错误日志文件权限
 ini_set('error_log_mode', 0644);
