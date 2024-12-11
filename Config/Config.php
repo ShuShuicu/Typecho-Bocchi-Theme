@@ -19,7 +19,6 @@ require_once 'Json.php';
 // 引入工具类
 require_once 'Tools.php';
 
-
 // 设置框架版本
 define('__FRAMEWORK_VER__', '1.1.4');
 

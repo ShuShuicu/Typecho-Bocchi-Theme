@@ -51,7 +51,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 </a>
                 <?php endwhile; ?>
                 <!-- 分类菜单 -->
-                <li class="mdui-subheader">分类统计</li>
+                <li class="mdui-subheader">分类</li>
                 <div class="mdui-collapse" mdui-collapse>
                     <!-- 文章分类 -->
                     <div class="mdui-collapse-item mdui-collapse-item-<?php echo Get::Options("SidebarNavCategory"); ?>">
@@ -90,7 +90,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         </div>
     </div>
 <script>
-    new Vue({
+new Vue({
     el: '#Sidebar',
     data: {
         SiteUrl: '<?php Get::SiteUrl(); ?>',

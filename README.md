@@ -26,11 +26,11 @@ Bocchi主题，前端基于MDUI1后端基于TTDF框架开发的一款Typecho博�
 | 纸片 | [c url="链接" img="图片链接"]文字[/c] |
 
 ## 更新日志
+
 ### 1.1.0
  - 新增Drive
  - 一键关闭评论
  - 更新TTDF框架
-
 
 ### 1.0.9
  - 优化Post.php
