@@ -9,10 +9,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
  * ThemeUrl
  * 获取主题目录 用于设置页面配置
  */
-define("THEME_URL", str_replace('//usr', '/usr', str_replace(Helper::options()->siteUrl, Helper::options()->rootUrl . '/', Helper::options()->themeUrl)));
-$str1 = explode('/themes/', (THEME_URL . '/'));
-$str2 = explode('/', $str1[1]);
-define("THEME_NAME", $str2[0]);
+define("THEME_URL", GetTheme::Url(false));
+define("THEME_NAME", GetTheme::Name(false));
 function themeConfig($form)
 {
 ?>

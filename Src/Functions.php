@@ -3,6 +3,8 @@
  * 这里是主题函数 / 功能文件。
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+$ThemeVer = GetTheme::Ver(false);
+define('BocchiVer', $ThemeVer);
 
 // 定义常量
 // 头像
@@ -23,19 +25,23 @@ if (Get::Options('GoLinkUrl') === 'open' && isset($_GET['GoLink']) && isset($_GE
 // 外链转内链
 function convertLinks($content, $widget, $lastResult = null)
 {
-    $content = empty($lastResult) ? $content : $lastResult;
+    $content = $lastResult ?? $content;
     $siteUrl = Get::Options('siteUrl');
+    $goLinkUrlBlank = Get::Options('GoLinkUrlBlank') === 'open';
+
     return preg_replace_callback(
         '/<a\s+(.*?)href="([^"]+)"(.*?)>/i',
-        function ($matches) use ($siteUrl) {
+        function ($matches) use ($siteUrl, $goLinkUrlBlank) {
             $url = $matches[2];
             error_log("Matched URL: " . $url); // 添加日志记录
+
             if (strpos($url, $siteUrl) === false) {
-                $encodedUrl = Get::Options('GoLinkUrlBlank') === 'open' ? base64_encode($url) : $url;
-                return '<a target="_blank" ' . $matches[1] . 'href="' . $siteUrl . '?GoLink&Url=' . $encodedUrl . '"' . $matches[3] . '>';
-            } else {
-                return '<a ' . $matches[1] . 'href="' . $url . '"' . $matches[3] . '>';
+                $encodedUrl = $goLinkUrlBlank ? base64_encode($url) : $url;
+                $targetBlank = $goLinkUrlBlank ? ' target="_blank"' : '';
+                return "<a{$targetBlank} {$matches[1]}href=\"{$siteUrl}?GoLink&Url={$encodedUrl}\"{$matches[3]}>";
             }
+
+            return "<a {$matches[1]}href=\"{$url}\"{$matches[3]}>"; 
         },
         $content
     );
