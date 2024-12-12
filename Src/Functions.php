@@ -27,18 +27,23 @@ function convertLinks($content, $widget, $lastResult = null)
 {
     $content = $lastResult ?? $content;
     $siteUrl = Get::Options('siteUrl');
-    $goLinkUrlBlank = Get::Options('GoLinkUrlBlank') === 'open';
+    $goLinkUrlBase64 = Get::Options('GoLinkUrlBase64') === 'open';
+
+    // 缓存选项以避免重复调用
+    $options = [
+        'siteUrl' => $siteUrl,
+        'goLinkUrlBase64' => $goLinkUrlBase64
+    ];
 
     return preg_replace_callback(
         '/<a\s+(.*?)href="([^"]+)"(.*?)>/i',
-        function ($matches) use ($siteUrl, $goLinkUrlBlank) {
+        function ($matches) use ($options) {
             $url = $matches[2];
             error_log("Matched URL: " . $url); // 添加日志记录
 
-            if (strpos($url, $siteUrl) === false) {
-                $encodedUrl = $goLinkUrlBlank ? base64_encode($url) : $url;
-                $targetBlank = $goLinkUrlBlank ? ' target="_blank"' : '';
-                return "<a{$targetBlank} {$matches[1]}href=\"{$siteUrl}?GoLink&Url={$encodedUrl}\"{$matches[3]}>";
+            if (strpos($url, $options['siteUrl']) === false) {
+                $encodedUrl = $options['goLinkUrlBase64'] ? base64_encode($url) : $url;
+                return "<a {$matches[1]} target='_blank' href=\"{$options['siteUrl']}?GoLink&Url={$encodedUrl}\"{$matches[3]}>"; 
             }
 
             return "<a {$matches[1]}href=\"{$url}\"{$matches[3]}>"; 

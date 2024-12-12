@@ -47,8 +47,8 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         );
     $form->addInput($GoLinkUrl);
     // 是否禁止明文跳转
-    $GoLinkUrlBlank = new Typecho_Widget_Helper_Form_Element_Radio(
-        'GoLinkUrlBlank',
+    $GoLinkUrlBase64 = new Typecho_Widget_Helper_Form_Element_Radio(
+        'GoLinkUrlBase64',
             array(
                 'open' => '允许',
                 'close' => '禁止',
@@ -57,7 +57,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             _t('Base64跳转'),
             _t('文章链接跳转是否为Base64，建议开启防止网站被刷。')
         );
-    $form->addInput($GoLinkUrlBlank);
+    $form->addInput($GoLinkUrlBase64);
 
     // 侧边翻译功能是否开启
     $SidebarTranslate = new Typecho_Widget_Helper_Form_Element_Radio(

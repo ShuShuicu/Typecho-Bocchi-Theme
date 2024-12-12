@@ -20,7 +20,7 @@ if (!empty($t_url)) {
 
     
     // 判断是否启用base64
-    if (Get::Options('GoLinkUrlBlank') === 'open'){
+    if (Get::Options('GoLinkUrlBase64') === 'open'){
         // 解码Base64
         $t_url = base64_decode($t_url);
     }
