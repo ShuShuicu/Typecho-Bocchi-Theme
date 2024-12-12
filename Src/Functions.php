@@ -39,7 +39,6 @@ function convertLinks($content, $widget, $lastResult = null)
         '/<a\s+(.*?)href="([^"]+)"(.*?)>/i',
         function ($matches) use ($options) {
             $url = $matches[2];
-            error_log("Matched URL: " . $url); // 添加日志记录
 
             if (strpos($url, $options['siteUrl']) === false) {
                 $encodedUrl = $options['goLinkUrlBase64'] ? base64_encode($url) : $url;
