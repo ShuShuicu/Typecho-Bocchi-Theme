@@ -329,9 +329,18 @@ class GetTheme {
     /**
      * 定义AssetsUrl
      * 防止之前写的主题失效
+     *
+     * @param bool $echo 当设置为 true 时，会直接输出；
+     *                  当设置为 false 时，则返回结果路径。
+     * @return string|null 返回结果路径或直接输出
      */
-    public static function AssetsUrl() {
-        return self::Url(false, 'Assets');
+    public static function AssetsUrl(bool $echo = false) {
+        $url = self::Url(false, 'Assets');
+        if ($echo) {
+            echo $url;
+        } else {
+            return $url;
+        }
     }
     /**
      * 获取主题名称
