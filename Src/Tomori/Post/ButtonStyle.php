@@ -72,6 +72,15 @@ if (!empty($buttons)) {
                         break;
                     }
                 }
+
+                // 如果没有匹配到任何预定义的域名，则通过 favicon.cccyun.cc 获取
+                if (empty($buttonImg)) {
+                    // 提取域名部分
+                    if (preg_match('/^https?:\/\/([^\/]+)/', $buttonLink, $matches)) {
+                        $domain = $matches[1];
+                        $buttonImg = 'https://favicon.cccyun.cc/' . $domain;
+                    }
+                }
             }
 ?>
     <div class="mdui-card mdui-m-y-1 mdui-hoverable">
