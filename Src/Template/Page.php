@@ -9,6 +9,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             <div class="mdui-card-content mdui-typo" id="PostContent"><?php GetPost::Content(); ?></div>
         </div>
     </div>
+
+    <?php GetBocchi::Tomori('Post/ButtonStyle'); ?>
+
 </div>
 <script>
 new Vue({
