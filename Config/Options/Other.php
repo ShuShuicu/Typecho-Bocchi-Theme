@@ -120,3 +120,20 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             _t('文章版权自定义，支持HTML。')
         );
     $form->addInput($PostCopyright);
+    // 自定义代码
+    $HeaderStyleCode = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'HeaderStyleCode',
+            NULL,
+            NULL,
+            _t('顶部自定义代码'),
+            _t('一般为自定义css或统计代码。需要填写自定义HTML标签。')
+        );
+    $form->addInput($HeaderStyleCode);
+    $FooterStyleCode = new Typecho_Widget_Helper_Form_Element_Textarea(
+        'FooterStyleCode',
+            NULL,
+            NULL,
+            _t('底部自定义代码'),
+            _t('一般为自定义JavaScript代码，需要填写自定义HTML标签。')
+        );
+    $form->addInput($FooterStyleCode);

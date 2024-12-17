@@ -56,6 +56,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             echo $subTitle;
         }
         ?></title>
-    <?php Get::Header() ?>
+    <?php 
+        Get::Header(); 
+        echo Get::Options("HeaderStyleCode");
+    ?>
 </head>
 <?php GetBocchi::Template('Header') ?>
