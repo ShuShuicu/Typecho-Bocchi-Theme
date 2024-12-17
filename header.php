@@ -23,7 +23,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
     <meta name="renderer" content="webkit" />
-    <link href="<?php echo Get::Options('FaviconUrl') ? Get::Options('FaviconUrl') : GetTheme::AssetsUrl() . "/images/favicon.svg"; ?>" rel="icon" />
+    <link href="<?php echo Get::Options('FaviconUrl') ? Get::Options('FaviconUrl') : GetBocchi::Assets() . "/images/favicon.svg"; ?>" rel="icon" />
     <?php 
         $cssFiles = [
             'style',
@@ -31,11 +31,11 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             'mdui/css/mdui.min',
             'nprogress/nprogress.min',
         ];
-        foreach ($cssFiles as $css):
+        foreach ($cssFiles as $css){
     ?>
-    <link rel="stylesheet" href="<?php echo GetTheme::AssetsUrl() . "/" . $css , '.css'; ?>?ver=<?php GetTheme::Ver(); ?>">
-    <?php endforeach; ?>
-    <script src="<?php echo GetTheme::AssetsUrl() . "/vue.min.js"; ?>?ver=<?php GetTheme::Ver(); ?>"></script>
+    <link rel="stylesheet" href="<?php echo GetBocchi::Assets() . $css , '.css'; ?>?ver=<?php GetTheme::Ver(); ?>">
+    <?php }; ?>
+    <script src="<?php echo GetBocchi::Assets() . "vue.min.js"; ?>?ver=<?php GetTheme::Ver(); ?>"></script>
     <title><?php $archiveTitle = GetPost::ArchiveTitle(
             [
                 "category" => _t("%s 分类"),

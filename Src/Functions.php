@@ -201,6 +201,16 @@ class GetBocchi {
     public static function Tomori($File) {
         Get::Need('Src/Tomori/' . $File . '.php');
     }
+
+    public static function Assets() {
+        $CdnUrl = Get::Options('AssetsCdn');
+        if ($CdnUrl == 'default') {
+            $CdnUrl = GetTheme::AssetsUrl() . '/';
+        } elseif ($CdnUrl == 'PoppinParty') {
+            $CdnUrl = Get::Options('AssetsCdnUrl');
+        }
+        return $CdnUrl;
+    }
 }
 
 $Files = ['Fields', 'ShortCode'];

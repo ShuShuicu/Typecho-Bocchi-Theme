@@ -15,9 +15,9 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             'nprogress/nprogress.min',
             'pjax',
         ];
-        foreach ($jsFiles as $js): ?>
-    <script src="<?php echo GetTheme::AssetsUrl() . "/" . $js . '.js'; ?>?ver=<?php GetTheme::Ver(); ?>"></script>
-    <?php endforeach; ?>
+        foreach ($jsFiles as $js){ ?>
+    <script src="<?php echo GetBocchi::Assets() . $js . '.js'; ?>?ver=<?php GetTheme::Ver(); ?>"></script>
+    <?php }; ?>
     <?php Get::Footer() ?>
 </body>
 </html>

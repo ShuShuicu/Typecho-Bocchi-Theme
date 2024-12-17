@@ -42,6 +42,31 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         NULL,
         NULL,
         _t('ICP备案号'),
-        _t('请填入ICP备案号，留空不显示。请前往<a href="https://beian.miit.gov.cn/" target="_blank">工信部</a>申请备案。<hr>')
+        _t('请填入ICP备案号，留空不显示。请前往<a href="https://beian.miit.gov.cn/" target="_blank">工信部</a>申请备案。')
     );
     $form->addInput($IcpCode);
+
+    // AssetsCDN 加速
+    $AssetsCdn = new Typecho_Widget_Helper_Form_Element_Radio(
+        'AssetsCdn',
+            array(
+                'default' => '本地',
+                'PoppinParty' => '自定义',
+                'https://ss.bscstorage.com/wpteam/assets/themes/Bocchi/' => '白山云',
+                'https://cdn.jsdelivr.net/gh/ShuShuicu/Typecho-Bocchi-Theme@master/Assets/' => 'jsDelivr',
+                'https://cdn.jsdmirror.com/gh/ShuShuicu/Typecho-Bocchi-Theme@master/Assets/' => 'jsDMirror',
+            ),
+            'default',
+            _t('静态资源加速'),
+            _t('主题目录下的Assets目录CDN静态资源加速。')
+        );
+    $form->addInput($AssetsCdn);
+    // 自定义资源地址
+    $AssetsCdnUrl = new Typecho_Widget_Helper_Form_Element_Text(
+        'AssetsCdnUrl',
+        NULL,
+        NULL,
+        _t('自定义资源地址'),
+        _t('自定义资源地址，请以http / s开头 / 结尾。<hr>')
+    );
+    $form->addInput($AssetsCdnUrl);
