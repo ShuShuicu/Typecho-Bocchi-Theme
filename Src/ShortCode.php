@@ -57,7 +57,23 @@ class ShortCodeParser {
         };
         $content = preg_replace_callback($pattern_c, $callback_c, $content);
 
+        // 提示短代码
+        $pattern_t = '/\[t\](.*?)\[\/t\]/i';
+        $callback_t = function ($matches) {
+            $text = htmlspecialchars($matches[1], ENT_QUOTES, 'UTF-8');
+            return '
+            <div class="mdui-card mdui-color-indigo">
+			<div class="mdui-card-content mdui-valign">
+				<div class="mdui-m-r-2"><i class="mdui-icon material-icons">info</i></div>
+				<div style="font-size: 1.3em;">' . $text . '</strong></div>
+			</div>
+		</div>
+            ';
+        };
+        $content = preg_replace_callback($pattern_t, $callback_t, $content);
+
         return $content;
+
     }
 }
 
