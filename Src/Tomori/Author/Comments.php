@@ -33,23 +33,25 @@ while ($AuthorComment->next()) {
 }
 ?>
 
-<script>
-    var commentsData = <?php echo json_encode($commentsData); ?>;
-</script>
-
 <div id="AuthorComment">
-    <div v-if="!hasComments">这个人很懒，还没有在本站评论过。</div>
+    <div v-if="!hasComments" class="mdui-valign">
+        <img class="mdui-center" :src="nullImg" />
+    </div>
     <div v-else>
         <div class="mdui-col mdui-list" v-for="comment in comments" :key="comment.coid">
-            <a :href="comment.permalink" class="mdui-list-item mdui-ripple mdui-text-truncate">{{ comment.excerpt }}</a>
+            <a :href="comment.permalink" class="mdui-list-item mdui-ripple mdui-text-truncate">
+                {{ comment.excerpt }}
+            </a>
         </div>
     </div>
 </div>
 
 <script>
+    var commentsData = <?php echo json_encode($commentsData); ?>;
     new Vue({
         el: '#AuthorComment',
         data: {
+            nullImg: '<?php GetBocchi::Assets(); ?>/images/null.png',
             comments: commentsData
         },
         computed: {

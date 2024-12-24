@@ -15,7 +15,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 }
 </style>
 <div id="Author">
-    <div class="mdui-card mdui-hoverable">
+    <div class="mdui-card mdui-hoverable mdui-m-b-2">
         <div class="mdui-card-media">
             <div class="AuthorBackground" :style="{ background: 'url(' + BackgroundImg + ')' }"></div>
                 <div class="mdui-grid-tile-actions">
@@ -30,7 +30,6 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
                 <div class="mdui-card-header-subtitle">{{ UserMail }}</div>
             </div>
             <div class="mdui-card-primary">
-                <div class="mdui-card-primary-title">{{ UserName }}的评论</div>
                 <div class="mdui-divider"></div>
                 <div class="mdui-card-content mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3 mdui-row-lg-4">
                     <?php GetBocchi::Tomori('Author/Comments'); ?>
