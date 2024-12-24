@@ -51,7 +51,7 @@ while ($AuthorComment->next()) {
     new Vue({
         el: '#AuthorComment',
         data: {
-            nullImg: '<?php GetBocchi::Assets(); ?>/images/null.png',
+            nullImg: '<?php echo GetBocchi::Assets(); ?>/images/null.png',
             comments: commentsData
         },
         computed: {
