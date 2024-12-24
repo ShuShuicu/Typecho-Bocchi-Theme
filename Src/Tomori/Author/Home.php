@@ -41,10 +41,10 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 new Vue({
     el: '#Author',
     data: {
-        UserName: '<?php $this->author() ?>',
+        UserName: '<?php $this->author(); ?>',
         UserMail: '<?php $this->author('mail'); ?>',
         UserAvatar: '<?php echo \Typecho\Common::gravatarUrl($this->author->mail, 220, 'X', 'mm', $this->request->isSecure()); ?>',
-        BackgroundImg: '<?php echo GetTheme::AssetsUrl(); ?>/images/user_t.jpg',
+        BackgroundImg: '<?php echo GetBocchi::Assets(); ?>/images/user_t.jpg',
     }
 })
 </script>
