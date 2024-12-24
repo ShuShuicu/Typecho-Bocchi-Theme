@@ -9,9 +9,9 @@
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 // 引入header
-Get::Need('Header.php');
+Get::Need('header.php');
 // 引入首页
 GetBocchi::Template((Get::Options('IndexStyle')));
 // 引入footer
-Get::Need('Footer.php');
+Get::Need('footer.php');
 ?>

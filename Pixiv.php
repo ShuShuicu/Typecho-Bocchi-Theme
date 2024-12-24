@@ -6,7 +6,7 @@
  * @link https://blog.miomoe.cn/
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
-Get::Need('Header.php');
+Get::Need('deader.php');
 GetBocchi::Template('Pages/Pixiv');
-Get::Need('Footer.php');
+Get::Need('hooter.php');
 ?>
