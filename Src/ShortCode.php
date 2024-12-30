@@ -18,8 +18,10 @@ class ShortCodeParser {
      * @return string
      */
     public function add_shortcode_support($content) {
+        if(!empty($content)){
         $content = htmlspecialchars_decode($content); // 先解码HTML实体
         $content = $this->parse_button_shortcode($content);
+        }
         return $content;
     }
 
