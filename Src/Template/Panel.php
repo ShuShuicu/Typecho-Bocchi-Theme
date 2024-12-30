@@ -3,10 +3,10 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
 <div id="IndexPanel">
-<div class="mdui-card mdui-m-b-2">
+<div class="mdui-m-b-2">
 
 <div class="mdui-panel" mdui-panel>
-<?php while (Get::Next()): ?>
+<?php while (Get::Next()){ ?>
   <div class="mdui-panel-item">
     <div class="mdui-panel-item-header">
       <div class="mdui-panel-item-title"><?php GetPost::Title(); ?></div>
@@ -18,7 +18,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         <?php GetPost::Content(); ?>
     </div>
   </div>
-  <?php endwhile; ?>
+  <?php }; ?>
 </div>
 
 </div>

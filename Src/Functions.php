@@ -213,7 +213,9 @@ class GetBocchi {
     }
 }
 
-$Files = ['Fields', 'ShortCode'];
+$Files = [
+    'Fields', 
+    'ShortCode'];
 foreach ($Files as $file) {
     require_once $file . '.php';
-}
+};

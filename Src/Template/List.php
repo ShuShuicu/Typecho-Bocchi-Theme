@@ -1,23 +1,11 @@
 <?php 
-// 首页列表模板
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 ?>
 <div id="IndexList">
 <?php
-$count = 0;
-while($this->next()): 
-    if ($count % 2 == 0 && $count > 0) {
-        echo '</div>'; // 关闭上一个行
-    }
-    if ($count % 2 == 0) {
-        echo '<div class="mdui-col-xs-12">'; // 开始一个新的行
-    }
+while(Get::Next()){ 
     PostCard($this);
-    $count++;
-endwhile; 
-if ($count > 0) {
-    echo '</div>'; 
-}
+}; 
 ?>
 
 <div class="mdui-m-y-1 mdui-valign mdui-card mdui-hoverable mdui-card-content">
@@ -34,6 +22,10 @@ new Vue({
     data: {
         CurrentPage: '<?php echo Get::CurrentPage() > 1 ? Get::CurrentPage() : 1; ?>',
         PageSize: '<?php echo ceil($this->getTotal() / $this->parameter->pageSize); ?>',
+    },
+    mounted() {
+        console.log('CurrentPage:', this.CurrentPage);
+        console.log('PageSize:', this.PageSize);
     }
 })
 </script>
@@ -46,7 +38,7 @@ function PostCard($post) {
         $thumbnailUrl = $thumbnailStyle ?: get_ArticleThumbnail($post);
     }
     ?>
-    <div class="mdui-col-xl-6 mdui-col-lg-6 mdui-col-md-6 mdui-col-sm-12 mdui-m-b-2">
+    <div class="mdui-col-xs-12 mdui-m-b-2">
         <a href="<?php 
             if (Get::Fields('PostStyleGoUrl') === 'open') {
                 echo Get::Fields('goUrlStyle');

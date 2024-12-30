@@ -4,14 +4,28 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     $IndexStyle = new Typecho_Widget_Helper_Form_Element_Select(
         'IndexStyle',
             array(
-                'IndexList' => '列表',
-                'IndexPanel' => '面板',
+                'Card' => '卡片',
+                'List' => '列表',
+                'Panel' => '面板',
             ),  // 添加选项数组
-            'IndexList',
+            'Card',
             _t('<h3>页面设置</h3>首页模板'),
             _t('请选择首页文章列表的显示方式，默认为列表，面板模式适用于文档站。')
         );
         $form->addInput($IndexStyle);
+    // 分类列表
+    $ArchiveStyle = new Typecho_Widget_Helper_Form_Element_Select(
+        'ArchiveStyle',
+            array(
+                'Card' => '卡片',
+                'List' => '列表',
+                'Panel' => '面板',
+            ),  // 添加选项数组
+            'List',
+            _t('分类模板'),
+            _t('请选择分类标签文章列表的显示方式，默认为列表。')
+        );
+        $form->addInput($ArchiveStyle);
     // 首页缩略图
     $IndexStyleThumbnail = new Typecho_Widget_Helper_Form_Element_Radio(
         'IndexStyleThumbnail',
