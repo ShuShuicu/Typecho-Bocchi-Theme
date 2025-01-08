@@ -27,7 +27,7 @@ if (Get::Options('PostNav') === 'open') {
                     };
                 }   
             ?>
-        <div class="mdui-card-primary">
+        <div class="mdui-card-content">
             <div class="mdui-card-primary-title">{{ Title }}</div>
             <div class="mdui-divider"></div>
             <div class="mdui-card-actions mdui-card-primary-subtitle">

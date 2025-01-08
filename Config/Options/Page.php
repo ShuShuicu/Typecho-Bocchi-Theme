@@ -5,6 +5,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         'IndexStyle',
             array(
                 'Card' => '卡片',
+                'SmallCard' => '小卡片',
                 'List' => '列表',
                 'Panel' => '面板',
             ),  // 添加选项数组
@@ -18,6 +19,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         'ArchiveStyle',
             array(
                 'Card' => '卡片',
+                'SmallCard' => '小卡片',
                 'List' => '列表',
                 'Panel' => '面板',
             ),  // 添加选项数组
@@ -27,17 +29,28 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
         );
         $form->addInput($ArchiveStyle);
     // 首页缩略图
-    $IndexStyleThumbnail = new Typecho_Widget_Helper_Form_Element_Radio(
-        'IndexStyleThumbnail',
+    $CardThumbnail = new Typecho_Widget_Helper_Form_Element_Radio(
+        'CardThumbnail',
             array(
                 'open' => '打开',
                 'close' => '关闭',
             ),
-            'close',
+            'open',
             _t('首页缩略图'),
-            _t('是否在文章列表中显示缩略图，注：面板模式不生效。')
+            _t('是否在文章列表卡片模式中显示缩略图')
         );
-        $form->addInput($IndexStyleThumbnail);
+        $form->addInput($CardThumbnail);
+    $ListThumbnail = new Typecho_Widget_Helper_Form_Element_Radio(
+        'ListThumbnail',
+            array(
+                'open' => '打开',
+                'close' => '关闭',
+            ),
+            'open',
+            _t('列表缩略图'),
+            _t('是否在文章列表模式中显示缩略图')
+        );
+        $form->addInput($ListThumbnail);
     // 首页介绍
     $IndexStyleExcerpt = new Typecho_Widget_Helper_Form_Element_Radio(
         'IndexStyleExcerpt',
@@ -47,7 +60,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
             ),
             'close',
             _t('首页文章简介'),
-            _t('是否在文章列表中显示文章简介，注：面板模式不生效。')
+            _t('是否在文章列表中显示文章简介，注：面板模式，小卡片模式不生效。')
         );
         $form->addInput($IndexStyleExcerpt);
     // 侧边显示设置

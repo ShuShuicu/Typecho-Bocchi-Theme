@@ -112,7 +112,7 @@ function get_ArticleThumbnail($widget)
     // 生成随机缩略图
     $base_url = !empty(Helper::options()->articleImgSpeed)
         ? rtrim(Helper::options()->articleImgSpeed, '/') . '/'
-        : GetBocchi::Assets() . '/images/thumb/';
+        : Helper::options()->themeUrl . '/Assets/images/thumb/';
 
     return get_RandomThumbnail($base_url);
 }
@@ -202,14 +202,19 @@ class GetBocchi {
         Get::Need('Src/Tomori/' . $File . '.php');
     }
 
-    public static function Assets() {
+    public static function Assets($directOutput = false) {
         $CdnUrl = Get::Options('AssetsCdn');
         if ($CdnUrl == 'default') {
             $CdnUrl = GetTheme::AssetsUrl() . '/';
         } elseif ($CdnUrl == 'PoppinParty') {
             $CdnUrl = Get::Options('AssetsCdnUrl');
         }
-        return $CdnUrl;
+    
+        if ($directOutput) {
+            echo $CdnUrl;
+        } else {
+            return $CdnUrl;
+        }
     }
 }
 
