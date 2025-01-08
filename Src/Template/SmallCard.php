@@ -67,7 +67,7 @@ function PostCard($post) {
             <div class="mdui-card mdui-m-b-2 mdui-hoverable">
                 <?php if ($thumbnailUrl){ ?>
                     <div class="mdui-card-media">
-                        <div class="thumbnail" style="background:url(<?php echo htmlspecialchars($thumbnailUrl); ?>);"></div>
+                        <div class="thumbnail" style="background:url(<?php echo htmlspecialchars($thumbnailUrl); ?>);height: 170px;"></div>
                     </div>
                 <?php }; ?>
                 <div class="mdui-card-header">
