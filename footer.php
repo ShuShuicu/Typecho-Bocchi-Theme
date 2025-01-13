@@ -19,7 +19,7 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
     <script src="<?php echo GetBocchi::Assets() . $js . '.js'; ?>?ver=<?php GetTheme::Ver(); ?>"></script>
     <?php }; ?>
     <?php 
-        Get::Footer(); 
+        echo Get::Footer(); 
         echo Get::Options('FooterStyleCode');
     ?>
 </body>

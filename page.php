@@ -4,5 +4,5 @@ if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 Get::Need('header.php');
 GetBocchi::Template('Page');
 // 引入footer
-Get::Need('dooter.php');
+Get::Need('footer.php');
 ?>
