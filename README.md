@@ -1,6 +1,3 @@
-# 该主题已停止维护，请使用Kasumi主题，支持无缝切换
-## https://github.com/ShuShuicu/Typecho-Kasumi-Theme
-
 ![logo](Assets/images/logo.png)
 
 Bocchi主题，前端基于MDUI1后端基于TTDF框架开发的一款Typecho博客主题。
