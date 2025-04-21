@@ -5,9 +5,6 @@
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 $ThemeVer = GetTheme::Ver(false);
 define('BocchiVer', $ThemeVer);
-
-// 定义常量
-// 头像
 $avatarCdn = Get::Options('AvatarCdn');
 define('__TYPECHO_GRAVATAR_PREFIX__', $avatarCdn);
 

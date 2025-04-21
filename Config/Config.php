@@ -8,6 +8,10 @@
  * @link https://blog.miomoe.cn/
  */
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
+
+// 设置框架版本
+define('__FRAMEWORK_VER__', '1.1.4');
+
 // Get功能
 require_once 'Get.php';
 // 主题设置功能
@@ -18,9 +22,6 @@ require_once 'Functions.php';
 require_once 'Json.php';
 // 引入工具类
 require_once 'Tools.php';
-
-// 设置框架版本
-define('__FRAMEWORK_VER__', '1.1.4');
 
 // 设置错误日志路径
 ini_set('error_log', GetTheme::Dir(false) . '/Config/error.log');
